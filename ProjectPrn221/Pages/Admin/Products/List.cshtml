@@ -1,0 +1,46 @@
+﻿@page
+@model ProjectPrn221.Pages.Admin.Products.ListModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2>List of Products</h2>
+<div style="background-color:green; color:white; font-weight:bold">
+    @if (TempData["msg"] != null)
+    {
+        <span>@TempData["msg"]</span>
+    }
+</div>
+<h3><a asp-page="Create">Create a new Product</a></h3>
+
+@{
+    var products = Model.Products;
+}
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Unit price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in products)
+        {
+            <tr>
+                <td>@p.ProductId</td>
+                <td>@p.ProductName</td>
+                <td>@p.UnitPrice</td>
+                <td>@p.QuantityPerUnit</td>
+                <td>@p.Category.CategoryName</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@p.ProductId">Edit</a>
+                </td>
+                <td>
+                    <a asp-page="List" asp-page-handler="Delete" asp-route-id="@p.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

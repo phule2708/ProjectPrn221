@@ -15,18 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = G:\Hùng\ProjectPrn221\ProjectPrn221
 build_property._RazorSourceGeneratorDebug = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Category/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Category/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Category/List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcTGlzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Orders/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cT3JkZXJzXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -47,8 +35,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUHJvZHVjdHNcTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Member/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Shared/_Layout.cshtml]

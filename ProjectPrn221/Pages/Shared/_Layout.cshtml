@@ -15,10 +15,10 @@
     <header>
         <nav style="height:100px" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Management Movies</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Management Products</a>
                 @if (@acount != null)
                 {
-                    <div>
+                    <div class="btn-secondary">
                         <p>@acount</p>
                         <form method="post" asp-page-handler="Logout">
                             <button type="submit" style="background: azure">
@@ -29,8 +29,8 @@
                 }
                 else
                 {
-                    <div>
-                        <button style="background: azure">
+                    <div class="btn-secondary">
+                        <button class="btn-secondary" style="background: azure">
                             <a href="/Account/Login">Login</a>
                         </button>
                     </div>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Spring2023\\PRN211\\BL5_Spring23\\ProjectPrn221\\ProjectPrn221.csproj": {}
+    "C:\\Users\\lephu\\OneDrive\\Documents\\GitHub\\ProjectPrn221\\ProjectPrn221\\ProjectPrn221.csproj": {}
   },
   "projects": {
-    "D:\\Spring2023\\PRN211\\BL5_Spring23\\ProjectPrn221\\ProjectPrn221.csproj": {
+    "C:\\Users\\lephu\\OneDrive\\Documents\\GitHub\\ProjectPrn221\\ProjectPrn221\\ProjectPrn221.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Spring2023\\PRN211\\BL5_Spring23\\ProjectPrn221\\ProjectPrn221.csproj",
+        "projectUniqueName": "C:\\Users\\lephu\\OneDrive\\Documents\\GitHub\\ProjectPrn221\\ProjectPrn221\\ProjectPrn221.csproj",
         "projectName": "ProjectPrn221",
-        "projectPath": "D:\\Spring2023\\PRN211\\BL5_Spring23\\ProjectPrn221\\ProjectPrn221.csproj",
+        "projectPath": "C:\\Users\\lephu\\OneDrive\\Documents\\GitHub\\ProjectPrn221\\ProjectPrn221\\ProjectPrn221.csproj",
         "packagesPath": "C:\\Users\\lephu\\.nuget\\packages\\",
-        "outputPath": "D:\\Spring2023\\PRN211\\BL5_Spring23\\ProjectPrn221\\obj\\",
+        "outputPath": "C:\\Users\\lephu\\OneDrive\\Documents\\GitHub\\ProjectPrn221\\ProjectPrn221\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

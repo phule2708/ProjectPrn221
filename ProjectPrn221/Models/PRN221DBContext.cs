@@ -26,7 +26,11 @@ namespace ProjectPrn221.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //
+            var builder = new ConfigurationBuilder()
+                                      .SetBasePath(Directory.GetCurrentDirectory())
+                                      .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            IConfigurationRoot configuration = builder.Build();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("PRN221DB"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

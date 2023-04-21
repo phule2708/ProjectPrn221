@@ -6,6 +6,21 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+
+    <div id="content-left">
+        <ul>
+            <a href="javascript:void">
+            <li class="active">Dashboard</li></a>
+            <a href="~/admin/orders/list">
+            <li>Orders</li></a>
+            <a href="~/common/products/list">
+            <li>Products</li></a>
+            <a href="~/admin/customers">
+            <li>Customers</li></a>
+            <a href="~/admin/employees">
+            <li>Employees</li></a>
+        </ul>
+    </div>
     <div>
         @RenderBody()
     </div>

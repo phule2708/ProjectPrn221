@@ -20,9 +20,6 @@ namespace ProjectPrn221.Pages.Admin.Products
         [BindProperty]
 
         public List<Category> Categories { get; set; }
-
-        [BindProperty]
-        int cateId { get; set; }
         public async Task<IActionResult> OnGet(int cateId)
         {
             string role = HttpContext.Session.GetString("account");
@@ -39,7 +36,7 @@ namespace ProjectPrn221.Pages.Admin.Products
             Categories = _db.Categories.ToList();
             return Page();
         }
-        public async Task<IActionResult> OnGetDelete(int id)
+        public async Task<IActionResult> OnGetDelete(int cateId, int id)
         {
             var count = _db.OrderDetails.Where(od => od.ProductId == id).Count();
             if (count > 0)
@@ -53,6 +50,7 @@ namespace ProjectPrn221.Pages.Admin.Products
                 _db.Products.Remove(product);
                 await _db.SaveChangesAsync();
             }
+            ViewData["SelectedId"] = cateId;
             ViewData["SelectedId"] = cateId;
             Categories = _db.Categories.ToList();
             TempData["msg"] = "Delete success.";
@@ -70,7 +68,7 @@ namespace ProjectPrn221.Pages.Admin.Products
             numbers.Add(id);
             string numbersJson1 = JsonConvert.SerializeObject(numbers);
             HttpContext.Session.SetString("listCart", numbersJson1);
-            ViewData["SelectedId"] = cateId;
+            ViewData["SelectedId"] = catId;
             ViewData["productId"] = id;
             OnGet(catId);
             

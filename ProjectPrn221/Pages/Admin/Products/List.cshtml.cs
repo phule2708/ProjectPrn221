@@ -17,7 +17,13 @@ namespace ProjectPrn221.Pages.Admin.Products
         public List<Product> Products { get; set; }
         public void OnGet()
         {
+            string role = HttpContext.Session.GetString("account");
+            ViewData["role"] = role;
             Products = _db.Products.Include(c => c.Category).ToList();
+        }
+        public void MyFunction()
+        {
+            Console.WriteLine();
         }
 
         public async Task<IActionResult> OnGetDelete(int id)

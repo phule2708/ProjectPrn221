@@ -20,18 +20,21 @@ namespace ProjectPrn221.Pages.Admin.Products
         [BindProperty]
 
         public List<Category> Categories { get; set; }
-        public async Task<IActionResult> OnGetAsync(int cateId)
+
+        [BindProperty]
+        int cateId { get; set; }
+        public async Task<IActionResult> OnGet(int cateId)
         {
             string role = HttpContext.Session.GetString("account");
             ViewData["role"] = role;
             ViewData["SelectedId"] = cateId;
             if (cateId == 0)
             {
-                Products =await _db.Products.Include(c => c.Category).ToListAsync();
+                Products = _db.Products.Include(c => c.Category).ToList();
             }
             else
             {
-                Products = await _db.Products.Include(c=>c.Category).Where(c=>c.CategoryId == cateId).ToListAsync();
+                Products =  _db.Products.Include(c=>c.Category).Where(c=>c.CategoryId == cateId).ToList();
             }
             Categories = _db.Categories.ToList();
             return Page();
@@ -50,11 +53,14 @@ namespace ProjectPrn221.Pages.Admin.Products
                 _db.Products.Remove(product);
                 await _db.SaveChangesAsync();
             }
+            ViewData["SelectedId"] = cateId;
+            Categories = _db.Categories.ToList();
             TempData["msg"] = "Delete success.";
             return RedirectToPage("./List");
         }
-        public void OnGetAddCart(int id)
+        public void OnGetAddCart(int catId, int id)
         {
+            Categories = _db.Categories.ToList();
             List<int> numbers = new List<int>();
             if (HttpContext.Session.GetString("listCart") != null)
             {
@@ -64,9 +70,9 @@ namespace ProjectPrn221.Pages.Admin.Products
             numbers.Add(id);
             string numbersJson1 = JsonConvert.SerializeObject(numbers);
             HttpContext.Session.SetString("listCart", numbersJson1);
-
+            ViewData["SelectedId"] = cateId;
             ViewData["productId"] = id;
-            OnGet();
+            OnGet(catId);
             
         }
     }

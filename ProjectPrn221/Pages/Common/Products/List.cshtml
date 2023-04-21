@@ -11,9 +11,7 @@
         <span>@TempData["msg"]</span>
     }
 </div>
-<<<<<<< HEAD:ProjectPrn221/Pages/Common/Products/List.cshtml
 
-=======
 <div class="filterCat">
     <form id="frmCate"  method="get">
     <select name="cateId" onchange="ChangeCate()">
@@ -32,7 +30,6 @@
     </select  
 </form>
 </div>
->>>>>>> d280565ddcca2659ec79e612d5afb2b8d264efcc:ProjectPrn221/Pages/Admin/Products/List.cshtml
 <div class="addMovies">
     @if (ViewBag.role == "Customer")
     {
@@ -80,7 +77,7 @@
                 else
                 {
                     <td>
-                        <button class="btn-cart"><a asp-page="List" asp-page-handler="AddCart" asp-route-id="@p.ProductId">Add Cart</a></button>
+                        <button class="btn-cart"><a asp-page="List" asp-page-handler="AddCart" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Add Cart</a></button>
                     </td>
                     <td>
                         <button class="btn-buy"><a href="/Admin/Products/buy">Buy</a></button>

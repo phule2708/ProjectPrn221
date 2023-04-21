@@ -46,7 +46,7 @@ namespace ProjectPrn221.Pages
                         else
                         {
                             string id = account.CustomerId;
-                            HttpContext.Session.SetString("account", "Custumoer");
+                            HttpContext.Session.SetString("account", "Customer");
                             HttpContext.Session.SetString("id", id);
                             return RedirectToPage("/Member/Index");
                         }

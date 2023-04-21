@@ -11,6 +11,24 @@
         <span>@TempData["msg"]</span>
     }
 </div>
+<div class="filterCat">
+    <form id="frmCate"  method="get">
+    <select name="cateId" onchange="ChangeCate()">
+        <option value="0">All Category</option>
+        @foreach (var c in Model.Categories)
+        {
+            @if (@ViewBag.SelectedId == @c.CategoryId)
+            {
+                <option value="@c.CategoryId" selected>@c.CategoryName</option>
+            }
+            else
+            {      
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        }
+    </select  
+</form>
+</div>
 <div class="addMovies">
     <button class="addMovies_layout">Add New Movie</button>
 </div>
@@ -65,6 +83,10 @@
     function addToCart(id){
        alert("Add product with id " + id + " to cart successfully");
     }
+    function ChangeCate() {
+        document.getElementById("frmCate").submit();
+    }
+
 </script>
 
 <style>
@@ -89,7 +111,10 @@
         float: right;
         margin-bottom: 18px;
     }
-
+    .filterCat{
+        float:left;
+         margin-bottom: 18px;
+    }
     .addMovies_layout {
         border-radius: 5px;
         height: 36px;

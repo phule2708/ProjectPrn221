@@ -15,11 +15,25 @@ namespace ProjectPrn221.Pages.Admin.Products
 
         [BindProperty]
         public List<Product> Products { get; set; }
-        public void OnGet()
+
+        [BindProperty]
+
+        public List<Category> Categories { get; set; }
+        public async Task<IActionResult> OnGetAsync(int cateId)
         {
             string role = HttpContext.Session.GetString("account");
             ViewData["role"] = role;
-            Products = _db.Products.Include(c => c.Category).ToList();
+            ViewData["SelectedId"] = cateId;
+            if (cateId == 0)
+            {
+                Products =await _db.Products.Include(c => c.Category).ToListAsync();
+            }
+            else
+            {
+                Products = await _db.Products.Include(c=>c.Category).Where(c=>c.CategoryId == cateId).ToListAsync();
+            }
+            Categories = _db.Categories.ToList();
+            return Page();
         }
         public void MyFunction()
         {

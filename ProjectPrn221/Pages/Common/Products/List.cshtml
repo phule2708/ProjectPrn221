@@ -33,9 +33,9 @@
 <div class="addMovies">
     @if (ViewBag.role == "Customer")
     {
-        <button class="addToCart">Cart</button>
+        <button class="addToCart"><a style="color:white" href="/Member/ListCart">Cart list</a></button>
     }
-    <button class="addMovies_layout">Add New Movie</button>
+    <button class="addMovies_layout">Add New Product</button>
 </div>
 
 @{
@@ -125,8 +125,7 @@
         float: right;
         margin-bottom: 18px;
     }
-    .filterCat{
-        float:left;
+    .filterCat{      
          margin-bottom: 18px;
     }
     .addMovies_layout {
@@ -142,6 +141,7 @@
         height: 36px;
         width: 100px;
         color: white;
-        background: #FFA500;
+        border:1px solid white;
+        background: #9370DB;
     }
 </style>

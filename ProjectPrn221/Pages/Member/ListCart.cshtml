@@ -2,3 +2,71 @@
 @model ProjectPrn221.Pages.Member.ListCartModel
 @{
 }
+@{
+    var products = new List<Product> {
+        new Product { ProductId = 1, ProductName = "Product 1", QuantityPerUnit = "5", UnitPrice = 10 },
+        new Product { ProductId = 2, ProductName = "Product 2", QuantityPerUnit = "3", UnitPrice = 5 },
+        new Product { ProductId = 3, ProductName = "Product 3", QuantityPerUnit = "1", UnitPrice = 19 }
+    };
+}
+
+<div>
+    <div class="product1">
+        <div class="ingredient">Product Id</div>
+        <div class="ingredient">ProductName</div>
+        <div class="ingredient" quantity">Quantity</div>
+        <div class="ingredient">Price</div>
+    </div>
+    @foreach (var i in ViewBag.listProductId as List<int>)
+    {
+        @foreach (var p in ViewBag.list as List<OrderDetail>)
+        {
+            @if (i == p.ProductId)
+            {
+                <div class="product">
+                    <div style="width:25%" class="id">@p.ProductId</div>
+                    <div style="width:25%" class="name">@p.Product.ProductName</div>
+                    <div style="width:25%" class="quantity">@p.Quantity</div>
+                    <div style="width:25%" class="price">@p.UnitPrice $</div>
+                </div>
+            }
+        }
+    }
+</div>
+<style>
+    .product {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid white;
+        margin-bottom: 10px;
+        background: rgb(234,234,234);
+        height: 128px;
+    }
+
+    .product1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid white;
+        margin-bottom: 10px;
+        background: rgb(150,88,138);
+        height: 80px;
+    }
+
+    .ingredient {
+        width: 25%;
+        color: white;
+    }
+
+    .product div {
+        margin-right: 10px;
+    }
+
+
+    .product .price {
+        font-weight: bold;
+    }
+</style>

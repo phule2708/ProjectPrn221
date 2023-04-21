@@ -11,7 +11,28 @@
         <span>@TempData["msg"]</span>
     }
 </div>
+<<<<<<< HEAD:ProjectPrn221/Pages/Common/Products/List.cshtml
 
+=======
+<div class="filterCat">
+    <form id="frmCate"  method="get">
+    <select name="cateId" onchange="ChangeCate()">
+        <option value="0">All Category</option>
+        @foreach (var c in Model.Categories)
+        {
+            @if (@ViewBag.SelectedId == @c.CategoryId)
+            {
+                <option value="@c.CategoryId" selected>@c.CategoryName</option>
+            }
+            else
+            {      
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        }
+    </select  
+</form>
+</div>
+>>>>>>> d280565ddcca2659ec79e612d5afb2b8d264efcc:ProjectPrn221/Pages/Admin/Products/List.cshtml
 <div class="addMovies">
     @if (ViewBag.role == "Customer")
     {
@@ -79,6 +100,10 @@
          xhr.setRequestHeader("Content-Type", "application/json");
          xhr.send(JSON.stringify(id));
     }
+    function ChangeCate() {
+        document.getElementById("frmCate").submit();
+    }
+
 </script>
 
 <style>
@@ -103,7 +128,10 @@
         float: right;
         margin-bottom: 18px;
     }
-
+    .filterCat{
+        float:left;
+         margin-bottom: 18px;
+    }
     .addMovies_layout {
         border-radius: 5px;
         height: 36px;

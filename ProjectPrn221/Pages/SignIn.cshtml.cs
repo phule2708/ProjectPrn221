@@ -41,7 +41,7 @@ namespace ProjectPrn221.Pages
 
                             HttpContext.Session.SetString("account", "Employees");
 
-                            return RedirectToPage("/Admin/Orders/List");
+                            return RedirectToPage("/Admin/dashboard");
                         }
                         else
                         {

@@ -2,6 +2,128 @@
 @model ProjectPrn221.Pages.Member.IndexModel
 @{
 }
-<h1>
-    Đây là member
-</h1>
+<div>
+    <h3 style="margin-bottom:30px">Order List</h3>
+    <div class="cate_page">
+        <h5 style="margin-right:10px">Sort products by Date:</h5>
+        <form id="myForm" method="post" onchange="submitForm()">
+            <select name="sortProduct" class="cate_layout">
+                @if (ViewBag.sort == "0")
+                {
+                    <option selected="1" value="0">Don't Sort</option>
+
+                }
+                else
+                {
+                    <option value="0">Don't Sort</option>
+                }
+
+                @if (ViewBag.sort == "asc")
+                {
+                    <option selected="1" value="asc">Ascending</option>
+
+                }
+                else
+                {
+                    <option value="asc">Ascending</option>
+                }
+
+                @if (ViewBag.sort == "desc")
+                {
+                    <option selected="1" value="desc">Descending</option>
+
+                }
+                else
+                {
+                    <option value="desc">Descending</option>
+                }
+            </select>
+        </form>
+    </div>
+    <div class="order">
+        <button style="background:aqua" class="btn-order"><a href="#">Cart</a></button>
+        <button style="background:#CC99FF;" class="btn-order"><a href="#">Order More</a></button>
+    </div>
+    <table class="table mt-3 table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    ProductId
+                </th>
+                <th>
+                    ProductName
+                </th>
+                <th>
+                    OrderDate
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    UnitPrice
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in ViewBag.ListOrder as List<Order>)
+            {
+                @foreach (var a in ViewBag.ListOrderDetail as List<OrderDetail>)
+                {
+                    @if (o.OrderId == a.OrderId)
+                    {
+                        <tr>
+                            <td>
+                                <a href="/admin/Orders/Detail?id=@o.OrderId">@a.ProductId</a>
+                            </td>
+                            <td>
+                                @a.Product.ProductName
+                            </td>
+                            <td>
+                                @o.OrderDate
+                            </td>
+                            <td>
+                                @a.Quantity
+                            </td>
+                            <td>
+                                @a.UnitPrice
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+      function submitForm() {
+        document.getElementById("myForm").submit();
+    }
+</script>
+
+<style>
+    .cate_layout {
+        width: 225px;
+        border-radius: 5px;
+        height: 28px;
+    }
+
+    .cate_page {
+        width: 225px;
+        margin-bottom: 40px;
+        margin-top: 30px;
+    }
+
+    .order {
+        text-align: right
+    }
+
+    .btn-order {
+        border-radius: 5px;
+        padding: 8px;
+        border: 1px;
+    }
+    .btn-order > a {
+        color: white;
+    }
+</style>

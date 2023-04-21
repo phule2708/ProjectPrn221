@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ProjectPrn221.Models;
 
 namespace ProjectPrn221.Pages.Admin.Products
@@ -21,11 +22,6 @@ namespace ProjectPrn221.Pages.Admin.Products
             ViewData["role"] = role;
             Products = _db.Products.Include(c => c.Category).ToList();
         }
-        public void MyFunction()
-        {
-            Console.WriteLine();
-        }
-
         public async Task<IActionResult> OnGetDelete(int id)
         {
             var count = _db.OrderDetails.Where(od => od.ProductId == id).Count();
@@ -42,6 +38,22 @@ namespace ProjectPrn221.Pages.Admin.Products
             }
             TempData["msg"] = "Delete success.";
             return RedirectToPage("./List");
+        }
+        public void OnGetAddCart(int id)
+        {
+            List<int> numbers = new List<int>();
+            if (HttpContext.Session.GetString("listCart") != null)
+            {
+                string numbersJson = HttpContext.Session.GetString("listCart");
+                numbers = JsonConvert.DeserializeObject<List<int>>(numbersJson);
+            }
+            numbers.Add(id);
+            string numbersJson1 = JsonConvert.SerializeObject(numbers);
+            HttpContext.Session.SetString("listCart", numbersJson1);
+
+            ViewData["productId"] = id;
+            OnGet();
+            
         }
     }
 }

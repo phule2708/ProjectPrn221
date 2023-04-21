@@ -8,16 +8,6 @@
         <h5 style="margin-right:10px">Sort products by Date:</h5>
         <form id="myForm" method="post" onchange="submitForm()">
             <select name="sortProduct" class="cate_layout">
-                @if (ViewBag.sort == "0")
-                {
-                    <option selected="1" value="0">Don't Sort</option>
-
-                }
-                else
-                {
-                    <option value="0">Don't Sort</option>
-                }
-
                 @if (ViewBag.sort == "asc")
                 {
                     <option selected="1" value="asc">Ascending</option>
@@ -42,7 +32,7 @@
     </div>
     <div class="order">
         <button style="background:aqua" class="btn-order"><a href="#">Cart</a></button>
-        <button style="background:#CC99FF;" class="btn-order"><a href="/Admin/Products/List">Order More</a></button>
+        <button style="background:#CC99FF;" class="btn-order"><a href="/Common/Products/List">Order More</a></button>
     </div>
     <table class="table mt-3 table-bordered">
         <thead>
@@ -123,7 +113,8 @@
         padding: 8px;
         border: 1px;
     }
-    .btn-order > a {
-        color: white;
-    }
+
+        .btn-order > a {
+            color: white;
+        }
 </style>

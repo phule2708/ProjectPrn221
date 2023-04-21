@@ -22,7 +22,7 @@ namespace ProjectPrn221.Pages.Member
             ListOrder = getListOrderById(id);
             var data = DB.OrderDetails.Include("Product").ToList();
             ListOrderDetail = data;
-            ViewData["sort"] = "0";
+            ViewData["sort"] = "asc";
         }
 
         public void OnPost()

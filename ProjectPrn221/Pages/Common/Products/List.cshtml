@@ -11,12 +11,21 @@
         <span>@TempData["msg"]</span>
     }
 </div>
+
 <div class="addMovies">
+    @if (ViewBag.role == "Customer")
+    {
+        <button class="addToCart">Cart</button>
+    }
     <button class="addMovies_layout">Add New Movie</button>
 </div>
 
 @{
     var products = Model.Products;
+}
+@if (ViewBag.productId != null)
+{
+    <p style="margin-top:40px;color:#FF0000">Add product with id @ViewBag.productId to cart successfully</p>
 }
 <table border="1" width="100%" class="table mt-3 table-bordered">
     <thead>
@@ -50,10 +59,10 @@
                 else
                 {
                     <td>
-                        <button class="btn-cart"><a onclick="addToCart(@p.ProductId)">Add Cart</a></button>
+                        <button class="btn-cart"><a asp-page="List" asp-page-handler="AddCart" asp-route-id="@p.ProductId">Add Cart</a></button>
                     </td>
                     <td>
-                        <button class="btn-buy"><a asp-page="List" asp-page-handler="Delete" asp-route-id="@p.ProductId">Buy</a></button>
+                        <button class="btn-buy"><a href="/Admin/Products/buy">Buy</a></button>
                     </td>
                 }
             </tr>
@@ -64,6 +73,11 @@
 <script>
     function addToCart(id){
        alert("Add product with id " + id + " to cart successfully");
+         const url = "/Page2";
+         const xhr = new XMLHttpRequest();
+         xhr.open("POST", url);
+         xhr.setRequestHeader("Content-Type", "application/json");
+         xhr.send(JSON.stringify(id));
     }
 </script>
 
@@ -96,5 +110,13 @@
         width: 187px;
         color: white;
         background: green;
+    }
+
+    .addToCart {
+        border-radius: 5px;
+        height: 36px;
+        width: 100px;
+        color: white;
+        background: #FFA500;
     }
 </style>

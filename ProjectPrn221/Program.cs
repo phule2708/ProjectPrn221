@@ -12,6 +12,7 @@ builder.Services.AddDbContext<PRN221DBContext>(opt =>
 
 var app = builder.Build();
 app.UseStaticFiles();
+app.UseStatusCodePagesWithRedirects("/errors/{0}");
 app.UseSession();
 app.MapRazorPages();
 

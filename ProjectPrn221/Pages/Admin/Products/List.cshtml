@@ -9,7 +9,9 @@
         <span>@TempData["msg"]</span>
     }
 </div>
-<h3><a asp-page="Create">Create a new Product</a></h3>
+<div class="addMovies">
+    <button class="addMovies_layout">Add New Movie</button>
+</div>
 
 @{
     var products = Model.Products;
@@ -44,3 +46,18 @@
         }
     </tbody>
 </table>
+
+<style>
+    .addMovies {
+        float: right;
+        margin-bottom: 18px;
+    }
+
+    .addMovies_layout {
+        border-radius: 5px;
+        height: 36px;
+        width: 187px;
+        color: white;
+        background: green;
+    }
+</style>

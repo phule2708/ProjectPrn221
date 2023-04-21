@@ -26,7 +26,7 @@ namespace ProjectPrn221.Pages
                 account = GetAccount(Email);
                 if (account == null)
                 {
-                    ViewData["Message"] = "Email không đúng ";
+                    ViewData["Message"] = "Email không Tồn Tại ";
                 }
                 else
                 {

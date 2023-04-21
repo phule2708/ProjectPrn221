@@ -18,7 +18,7 @@
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Management Products</a>
                 @if (@acount != null)
                 {
-                    <div class="btn-secondary">
+                    <div style="border-color:cornsilk">
                         <p>@acount</p>
                         <form method="post" asp-page-handler="Logout">
                             <button type="submit" style="background: azure">
@@ -29,7 +29,7 @@
                 }
                 else
                 {
-                    <div class="btn-secondary">
+                    <div class="btn-secondary" style="border-color:cornsilk">
                         <button class="btn-secondary" style="background: azure">
                             <a href="/Account/Login">Login</a>
                         </button>

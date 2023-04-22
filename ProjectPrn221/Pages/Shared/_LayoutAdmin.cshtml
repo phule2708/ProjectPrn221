@@ -7,133 +7,47 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebApplication2</title>
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.css" />
+
+    <!-- Your HTML code goes here -->
+    <!-- Include SimpleBar script file -->
+    <script src="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.js"></script>
+
+    <script src="../wwwroot/js/site.js" type="text/javascript" async></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
 
-
-
-        /* main page */
-        article {
-            position: relative;
-            width:90%;
-           margin:0 auto;
-            background-color: #fff;
-            overflow: auto;
-            z-index: 0;
-            -webkit-transform-origin: 0 50%;
-            -moz-transform-origin: 0 50%;
-            -ms-transform-origin: 0 50%;
-            -o-transform-origin: 0 50%;
-            transform-origin: 0 50%;
+        #simple-bar {
+            border: 1px solid grey;
+            margin-top:0;
+            max-height: 600px;
+            min-height: 100px;
         }
 
-
-            article:after {
-                position: absolute;
-                content: ' ';
-                left: 100%;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                /*	background-image: -webkit-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-                    background-image: -moz-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-                    background-image: -ms-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-                    background-image: -o-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-                    background-image: linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-                    pointer-events: none;*/
-            }
-
-        /* navigation */
-        #nav {
-
-            position: fixed;
-            left: -16em;
-            background-color: bisque;
-            border-right: 50px solid bisque;
-            //box-shadow: 4px 0 5px rgba(0,0,0,0.2);
-            z-index: 1;
-            cursor: pointer;
+        main {
+            border-radius: 2px solid gray;
+            width: 90%;
+            margin: 10px auto;
         }
 
-            #nav:after {
-                position: absolute;
-                content: ' ';
-                width: 0;
-                height: 0;
-                right: -70px;
-                top: 50%;
-                border-width: 15px 10px;
-                border-style: solid;
-                border-color: transparent transparent transparent #bada55;
-            }
-
-            #nav ul {
-                width: 14em;
-                list-style-type: none;
-                margin: 0;
-                padding: 1em;
-                
-            }
-
-            #nav a:link, nav a:visited {
-                display: block;
-                width: 100%;
-                font-weight: bold;
-                line-height: 2.5em;
-                text-indent: 10px;
-                text-decoration: none;
-                color: black;
-                border-radius: 4px;
-                outline: 0 none;
-            }
-
-            #nav a:hover, nav a:focus {
-                color: #fff;
-                background-color: darken(#bada55, 20%);
-                text-shadow: 0 0 4px #fff;
-                box-shadow: inset 0 2px 2px rgba(0,0,0,0.2);
-            }
-
-        /* hovering */
-        article, article:after, nav, nav * {
-            -webkit-transition: all 600ms ease;
-            -moz-transition: all 600ms ease;
-            -ms-transition: all 600ms ease;
-            -o-transition: all 600ms ease;
-            transition: all 600ms ease;
-        }
-
-        #nav:hover {
-            left: 0;
-        }
-
-            #nav:hover ~ article {
-                -webkit-transform: translateX(16em) perspective(600px) rotateY(10deg);
-                -moz-transform: translateX(16em) perspective(600px) rotateY(10deg);
-                -ms-transform: translateX(16em) perspective(600px) rotateY(10deg);
-                -o-transform: translateX(16em) perspective(600px) rotateY(10deg);
-                transform: translateX(16em) perspective(600px) rotateY(10deg);
-            }
-
-               
-
-        /* typography */
-        
-     
-
-        #content-right {
-            float: right;
-            width: 85%;
-        }
-
-        nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3 {
+        nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3, footer, .col-2 {
             background: bisque !important;
         }
 
         #content_left {
-            float: left;
             background: bisque !important;
             width: 15%;
+            height: auto;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .col-2 a {
+            color: black;
+            font-size: 24px;
+            margin-bottom: 25px;
         }
     </style>
 </head>
@@ -141,7 +55,7 @@
     <header>
         <nav style="height:100px" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Management Products</a>
+                <a class="navbar-brand font-weight-bold" asp-area="" asp-page="/Index">Management Products</a>
                 @if (@acount != null)
                 {
                     <div style="border-color:cornsilk">
@@ -165,38 +79,36 @@
         </nav>
     </header>
     <!-- menu -->
-    <div >
-        <nav id="nav">
-            <ul>
-                <a href="javascript:void">
-                <li class="active">Dashboard</li></a>
-                <a href="~/admin/orders/list">
-                <li>Orders</li></a>
-                <a href="~/common/products/list">
-                <li>Products</li></a>
-                <a href="~/admin/customers">
-                <li>Customers</li></a>
-                <a href="~/admin/employees">
-                <li>Employees</li></a>
-            </ul>
-        </nav>
+    <div class="row mb-2">
+        <div class="col-2">
+            <nav class="mt-5">
+                <ul class="text-xl-center">
+                    <a href="javascript:void">
+                    <li class="active">Dashboard</li></a>
+                    <a href="~/admin/orders/list">
+                    <li>Orders</li></a>
+                    <a href="~/common/products/list">
+                    <li>Products</li></a>
+                    <a href="~/admin/customers">
+                    <li>Customers</li></a>
+                    <a href="~/admin/employees">
+                    <li>Employees</li></a>
+                </ul>
+            </nav>
+        </div>
+
 
         <!-- main article -->
-        <article>
+        <div class="col-10">
 
-            <main >
+            <main class="   container ">
                 @RenderBody()
             </main>
-        </article>
+
+        </div>
 
     </div>
-
-
-
-
-
-
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted p-4">
         <div class="container">
             &copy; 2023 - WebApplication3 - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>

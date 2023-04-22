@@ -8,7 +8,7 @@ namespace ProjectPrn221.Pages.Member
     public class IndexModel : PageModel
     {
         public static string CustomerID;
-        private readonly PRN221DBContext DB;
+        private readonly PRN221DBContext DB;        
 
         [ViewData]
         public List<Order> ListOrder { get; set; }

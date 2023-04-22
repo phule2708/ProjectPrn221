@@ -11,29 +11,88 @@
 }
 
 <div>
-    <div class="product1">
-        <div class="ingredient">Product Id</div>
-        <div class="ingredient">ProductName</div>
-        <div class="ingredient" quantity">Quantity</div>
-        <div class="ingredient">Price</div>
-    </div>
-    @foreach (var i in ViewBag.listProductId as List<int>)
-    {
-        @foreach (var p in ViewBag.list as List<OrderDetail>)
+    <form method="post" id="pay" asp-page-handler="Pay">
+        <div class="product1">
+            <div class="ingredient">Product Id</div>
+            <div class="ingredient">ProductName</div>
+            <div class="ingredient">Price</div>
+            <div class="ingredient">Quantity</div>
+        </div>
+        @if (ViewBag.listProductId == null)
         {
-            @if (i == p.ProductId)
+            <h1>Bạn ko có sản phảm nào thêm vào cart</h1>
+        }
+        else
+        {
+            @foreach (var i in ViewBag.listProductId as List<int>)
             {
-                <div class="product">
-                    <div style="width:25%" class="id">@p.ProductId</div>
-                    <div style="width:25%" class="name">@p.Product.ProductName</div>
-                    <div style="width:25%" class="quantity">@p.Quantity</div>
-                    <div style="width:25%" class="price">@p.UnitPrice $</div>
-                </div>
+                @foreach (var p in ViewBag.list as List<Product>)
+                {
+                    @if (i == p.ProductId)
+                    {
+                        <div class="product">
+                            <div style="width:25%" class="id" name="id">@p.ProductId</div>
+                            <input type="hidden" name="idP" value="@p.ProductId">
+                            <div style="width:25%" class="name">@p.ProductName</div>
+                            <div style="width:25%" class="price" data-price="@p.UnitPrice">@p.UnitPrice $</div>
+                            <input type="hidden" name="price" value="@p.UnitPrice">
+                            <div style="width:20%">
+                                <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="0" onchange="calculateTotalAll()">
+                            </div>
+                            <button class="btn-delete">Delete</button>
+                        </div>
+                    }
+                }
             }
         }
-    }
+        <div style="text-align:right">
+            <div>Total: <span id="total-all">$0</span></div>
+            <button onclick="payProduct()" class="btn-buy">Thanh Toán</button>
+        </div>
+    </form>
 </div>
+<script>
+        function payProduct(){
+            const confirmed = confirm('Bạn có muốn thanh toán không?');
+            if (confirmed) {     
+                document.getElementById('pay').submit();
+            } else {
+                console.log('Người dùng đã hủy thanh toán');
+            }
+        }
+        function calculateTotalAll() {
+             let total = 0;
+             const products = document.querySelectorAll('.product');
+             for (let i = 0; i < products.length; i++) {
+             const priceElement = products[i].querySelector('.price');
+             const quantityElement = products[i].querySelector('#quantity');
+             const price = parseFloat(priceElement.getAttribute('data-price'));
+             console.log(quantityElement);
+             const quantity = parseInt(quantityElement.value);
+             const subTotal = price * quantity;
+             total += subTotal;
+         }
+            const totalElement = document.getElementById('total-all');
+            totalElement.innerHTML = '$' + total.toFixed(4);
+        }
+</script>
 <style>
+    .btn-buy {
+        border-radius: 5px;
+        color: white;
+        background: blue;
+        border: 1px coral;
+        padding: 5px;
+    }
+
+    .btn-delete {
+        border-radius: 5px;
+        color: white;
+        background: coral;
+        border: 1px coral;
+        padding: 5px;
+    }
+
     .product {
         display: flex;
         flex-direction: row;

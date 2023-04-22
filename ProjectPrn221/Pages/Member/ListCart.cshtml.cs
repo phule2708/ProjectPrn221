@@ -9,6 +9,8 @@ namespace ProjectPrn221.Pages.Member
     public class ListCartModel : PageModel
     {
         //private readonly PRN221DBContext db;
+        
+        public static List<int> listId;
 
         [ViewData]
         public List<Product> list { get; set; }
@@ -24,7 +26,8 @@ namespace ProjectPrn221.Pages.Member
                 listProductId = JsonConvert.DeserializeObject<List<int>>(numbersJson);
                 HashSet<int> myHashSet = new HashSet<int>(listProductId);
                 listProductId = myHashSet.ToList();
-                list = db.Products.ToList();
+                listId = listProductId;
+                list = db.Products.ToList();             
             }
         }
         public void OnPostPay()
@@ -39,7 +42,7 @@ namespace ProjectPrn221.Pages.Member
             {
                 if (int.Parse(ArrayQuan[i]) > 0)
                 {
-                    addOrderDetail(listProductId[i],decimal.Parse(StringPrice[i]),short.Parse(ArrayQuan[i]));
+                    addOrderDetail(listId[i],decimal.Parse(StringPrice[i]),short.Parse(ArrayQuan[i]));
                 }else
                 {
 
@@ -61,7 +64,8 @@ namespace ProjectPrn221.Pages.Member
                 Quantity = quantity,
                 Discount = 1,
             };
-
+            db.OrderDetails.Add(detail);
+            db.SaveChanges();
         }
         public void addOrder()
         {

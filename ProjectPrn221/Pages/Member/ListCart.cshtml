@@ -2,13 +2,6 @@
 @model ProjectPrn221.Pages.Member.ListCartModel
 @{
 }
-@{
-    var products = new List<Product> {
-        new Product { ProductId = 1, ProductName = "Product 1", QuantityPerUnit = "5", UnitPrice = 10 },
-        new Product { ProductId = 2, ProductName = "Product 2", QuantityPerUnit = "3", UnitPrice = 5 },
-        new Product { ProductId = 3, ProductName = "Product 3", QuantityPerUnit = "1", UnitPrice = 19 }
-    };
-}
 
 <div>
     <form method="post" id="pay" asp-page-handler="Pay">

@@ -20,7 +20,7 @@ namespace ProjectPrn221.Pages.Admin.Customers
 
         public IList<Customer> Customer { get;set; } = default!;
 
-        private int pageSize = 10;
+        private int pageSize = 6;
         [BindProperty]
         public decimal totalPage { get; set; }
 
@@ -32,12 +32,13 @@ namespace ProjectPrn221.Pages.Admin.Customers
             }
             if (_context.Customers != null)
             {
-
+                
                 ViewData["search"] = search;
                
                 IQueryable<Customer> query = _context.Customers.Where(e=> (search == null)? true : e.ContactName.Contains(search));
                 totalPage = Math.Ceiling((decimal)query.Count() / pageSize);
                 (query, totalPage) = Utils.Page(query, pageSize, pageNum);
+                ViewData["page"] = pageNum;
                 Customer = await query.ToListAsync();
             }
             return Page();

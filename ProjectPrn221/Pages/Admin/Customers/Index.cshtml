@@ -48,7 +48,7 @@
                             @Html.DisplayFor(modelItem => item.Address)
                         <td/>
                         <td>
-                            <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> |
+                            <button class="bg-primary"><a class="text-white" asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> </button>
                         </td>
                     </tr>
                 }
@@ -59,7 +59,13 @@
         <div class="pagination" id="pagination">
             @for(int i = 1; i <= Model.totalPage; i++)
             {
-                <a asp-route-pagenum="@i">@i</a>
+                @if (ViewBag.page == @i)
+                {
+                    <a style="background-color:bisque" asp-route-pagenum="@i">@i</a>
+                }else{
+                    <a asp-route-pagenum="@i">@i</a>
+                }
+                
             }
         </div>
     </div>

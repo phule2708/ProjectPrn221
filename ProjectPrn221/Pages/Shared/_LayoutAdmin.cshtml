@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <!-- Your HTML code goes here -->
     <!-- Include SimpleBar script file -->
     <script src="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.js"></script>
@@ -59,7 +61,12 @@
             width: 90%;
             margin: 10px auto;
         }
+        i{
+            font-size:40px;
+            color:white;
+            margin:auto;
 
+        }
         nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3, footer, .col-2 {
             background: bisque !important;
         }
@@ -78,6 +85,24 @@
             color: black;
             font-size: 24px;
             margin-bottom: 25px;
+        }
+        form{
+            float:left;
+        }
+        input{
+            border-radius:2px;
+            padding:5px;
+        }
+
+        footer{
+            height: 50px;
+            bottom: 0;
+            margin-top:20px;
+            width: 100%;
+        }
+
+        #dashboard{
+            height:800px;
         }
     </style>
 </head>
@@ -109,11 +134,11 @@
         </nav>
     </header>
     <!-- menu -->
-    <div class="row mb-2">
+    <div id="dashboard" class="row mb-2">
         <div class="col-2">
             <nav class="mt-5">
                 <ul class="text-xl-center">
-                    <a href="javascript:void">
+                    <a href="~/admin/DashBoard">
                     <li class="active">Dashboard</li></a>
                     <a href="~/admin/orders/list">
                     <li>Orders</li></a>

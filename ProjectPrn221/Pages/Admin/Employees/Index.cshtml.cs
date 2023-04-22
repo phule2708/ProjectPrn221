@@ -20,18 +20,19 @@ namespace ProjectPrn221.Pages.Admin.Employees
 
         public IList<Employee> Employee { get; set; } = default!;
 
-        private int pageSize = 10;
+        private int pageSize = 6;
         public decimal totalPage = 0;
 
         public async Task OnGetAsync(int pageNum)
         {
-
+            
             if (_context.Employees != null)
             {
         
                 IQueryable<Employee> query = _context.Employees;
                 totalPage = Math.Ceiling((decimal)query.Count() / pageSize);
                 (query, totalPage) = Utils.Page(query, pageSize, pageNum);
+                ViewData["page"] = pageNum;
                 Employee = await query.Include(e => e.Department).ToListAsync();
             }
         }

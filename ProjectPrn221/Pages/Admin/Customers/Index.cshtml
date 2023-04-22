@@ -1,0 +1,70 @@
+﻿@page
+@model ProjectPrn221.Pages.Admin.Customers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <h1>Customers</h1>
+    <form action="" method="get">
+        <input type="text" name="search" placeholder="Enter customer name to search" value="@ViewData["search"]">
+        <input type="submit" value="Search">
+    </form>
+    <div>
+        <table class="table" id="orders">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer[0].CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer[0].ContactName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer[0].ContactTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer[0].Address)
+                    </th>
+                    
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Customer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        <td/>
+                        <td>
+                            <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div id="paging">
+        <div class="pagination" id="pagination">
+            @for(int i = 1; i <= Model.totalPage; i++)
+            {
+                <a asp-route-pagenum="@i">@i</a>
+            }
+        </div>
+    </div>
+    <script>paging(@Model.totalPage);</script>
+</div>
+
+
+

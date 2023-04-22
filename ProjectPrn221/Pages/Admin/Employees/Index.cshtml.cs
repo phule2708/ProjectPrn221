@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ProjectPrn221.Models;
-
+using ProjectPrn221.Pages.Common;
 namespace ProjectPrn221.Pages.Admin.Employees
 {
     public class IndexModel : PageModel
@@ -25,15 +25,14 @@ namespace ProjectPrn221.Pages.Admin.Employees
 
         public async Task OnGetAsync(int pageNum)
         {
+
             if (_context.Employees != null)
             {
-                pageNum -= 1;
-                if (pageNum <= 0)
-                {
-                    pageNum = 0;
-                }
-                totalPage = Math.Ceiling((decimal)_context.Employees.Count() / pageSize);
-                Employee = await _context.Employees.Skip(pageNum*pageSize).Take(pageSize).Include(e => e.Department).ToListAsync();
+        
+                IQueryable<Employee> query = _context.Employees;
+                totalPage = Math.Ceiling((decimal)query.Count() / pageSize);
+                (query, totalPage) = Utils.Page(query, pageSize, pageNum);
+                Employee = await query.Include(e => e.Department).ToListAsync();
             }
         }
     }

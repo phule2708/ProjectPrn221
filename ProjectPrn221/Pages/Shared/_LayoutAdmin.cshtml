@@ -8,14 +8,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebApplication2</title>
     <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.css" />
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
     <!-- Your HTML code goes here -->
     <!-- Include SimpleBar script file -->
     <script src="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.js"></script>
-
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../wwwroot/js/site.js" type="text/javascript" async></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
+
+        #paging {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .pagination {
+            display: inline-block;
+            text-align: center;
+        }
+
+            .pagination a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+                .pagination a.active {
+                    background-color: sienna;
+                    color: white;
+                    border-radius: 5px;
+                }
+
+                .pagination a:hover:not(.active) {
+                    background-color: #ddd;
+                    border-radius: 5px;
+                }
 
         #simple-bar {
             border: 1px solid grey;
@@ -100,8 +130,7 @@
 
         <!-- main article -->
         <div class="col-10">
-
-            <main class="   container ">
+            <main class="container">
                 @RenderBody()
             </main>
 
@@ -117,7 +146,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

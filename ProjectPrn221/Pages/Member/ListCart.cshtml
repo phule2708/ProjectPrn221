@@ -1,6 +1,7 @@
 ﻿@page
 @model ProjectPrn221.Pages.Member.ListCartModel
 @{
+    List<int> quantities = new List<int>();
 }
 
 <div>
@@ -35,7 +36,7 @@
                             <input type="hidden" name="price" value="@p.UnitPrice">
                             <div style="width:20%">
                                 <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="0" onchange="calculateTotalAll()">
-                            </div>
+                            </div>                         
                             <button onclick="event.preventDefault(); document.getElementById('delete-@p.ProductId').submit()" class="btn-delete">Delete</button>
                             <form method="post" id="delete-@p.ProductId" asp-page-handler="Delete">
                                 <input type="hidden" name="delete" value="@p.ProductId" />
@@ -43,10 +44,13 @@
                         </div>
                     }
                 }
+                @i
             }
-        }
+
+        }      
         <div style="text-align:right">
             <div>Total: <span id="total-all">$0</span></div>
+            <button class="btn btn-secondary"><a style="color:white" href="/Member/Index">Back</a></button>
             <button onclick="payProduct()" class="btn-buy">Thanh Toán</button>
         </div>
     </form>

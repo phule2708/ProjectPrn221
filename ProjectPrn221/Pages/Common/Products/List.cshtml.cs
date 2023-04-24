@@ -77,9 +77,58 @@ namespace ProjectPrn221.Pages.Admin.Products
             string numbersJson1 = JsonConvert.SerializeObject(numbers);
             HttpContext.Session.SetString("listCart", numbersJson1);
             ViewData["SelectedId"] = catId;
-            ViewData["productId"] = id;
+            ViewData["productId"] = "Add product with id " + id + " to cart successfully";
             OnGet(catId);
 
+        }
+        public void OnPostBuy(int catId)
+        {
+            int id = int.Parse(Request.Form["buyProduct"]);
+            decimal price = decimal.Parse(Request.Form["buyProduct"]);
+            string name = Request.Form["productName"];
+            addOrder();
+            addOrderDetail(id, price);
+            ViewData["productId"] = "buy product " + name + "to successfully";
+            OnGet(catId);
+
+        }
+        public void addOrderDetail(int productid, decimal price)
+        {
+            var db = new PRN221DBContext();
+            var firstEntity = db.Orders.OrderByDescending(e => e.OrderId).FirstOrDefault();
+            int id = firstEntity.OrderId;
+            OrderDetail detail = new OrderDetail()
+            {
+                OrderId = id,
+                ProductId = productid,
+                UnitPrice = price,
+                Quantity = 1,
+                Discount = 1,
+            };
+            db.OrderDetails.Add(detail);
+            db.SaveChanges();
+        }
+        public void addOrder()
+        {
+            var db = new PRN221DBContext();
+            string id = HttpContext.Session.GetString("id");
+            Order o = new Order()
+            {
+                CustomerId = id,
+                EmployeeId = null,
+                OrderDate = DateTime.Now,
+                RequiredDate = null,
+                ShippedDate = null,
+                Freight = 0,
+                ShipName = null,
+                ShipAddress = null,
+                ShipCity = null,
+                ShipRegion = null,
+                ShipPostalCode = null,
+                ShipCountry = null,
+            };
+            db.Orders.Add(o);
+            db.SaveChanges();
         }
     }
 }

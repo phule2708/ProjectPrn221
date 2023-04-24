@@ -9,7 +9,7 @@ namespace ProjectPrn221.Pages.Member
     public class ListCartModel : PageModel
     {
         //private readonly PRN221DBContext db;
-        
+        public static List<decimal> test;
         public static List<int> listId;
 
         [ViewData]
@@ -42,7 +42,7 @@ namespace ProjectPrn221.Pages.Member
         public void OnPostDelete()
         {
             int deleteProduct = int.Parse(Request.Form["delete"]);
-            for(int i = 0; i < listId.Count; i++)
+            for (int i = 0; i < listId.Count; i++)
             {
                 listId.RemoveAll(item => item == deleteProduct);
             }
@@ -54,18 +54,19 @@ namespace ProjectPrn221.Pages.Member
         }
         public void OnPostPay()
         {
-            //string[] idArray = id.Split(',');
-            string quantity = Request.Form["quantity"];
+            string quantity = Request.Form["quantity"][0];
+            string quantity2 = Request.Form["quantity"][1];
             string price = Request.Form["price"];
             string[] ArrayQuan = quantity.Split(',');
             string[] StringPrice = price.Split(',');
             addOrder();
-            for(int i = 0; i < ArrayQuan.Length; i++)
+            for (int i = 0; i < ArrayQuan.Length; i++)
             {
                 if (int.Parse(ArrayQuan[i]) > 0)
                 {
-                    addOrderDetail(listId[i],decimal.Parse(StringPrice[i]),short.Parse(ArrayQuan[i]));
-                }else
+                    addOrderDetail(listId[i], decimal.Parse(StringPrice[i]), short.Parse(ArrayQuan[i]));
+                }
+                else
                 {
 
                 }
@@ -73,7 +74,7 @@ namespace ProjectPrn221.Pages.Member
             HttpContext.Session.Remove("listCart");
 
         }
-        public void addOrderDetail(int productid , decimal price, short quantity)
+        public void addOrderDetail(int productid, decimal price, short quantity)
         {
             var db = new PRN221DBContext();
             var firstEntity = db.Orders.OrderByDescending(e => e.OrderId).FirstOrDefault();
@@ -97,7 +98,7 @@ namespace ProjectPrn221.Pages.Member
             {
                 CustomerId = id,
                 EmployeeId = null,
-                OrderDate = DateTime.Now,   
+                OrderDate = DateTime.Now,
                 RequiredDate = null,
                 ShippedDate = null,
                 Freight = 0,

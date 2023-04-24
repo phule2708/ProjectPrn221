@@ -4,93 +4,94 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <h1>Employees</h1>
+<h1>Employees</h1>
 
-    <div>
-        <a asp-page="Create">Create New</a>
-    </div>
-    <div>
-        <table class="table" id="orders">
-            <thead>
+<div>
+    <button class="bg-success text-white float-right"><a class="text-white" asp-page="Create">Create New</a></button>
+</div>
+<div>
+    <table class="table" id="orders">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].TitleOfCourtesy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].BirthDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].HireDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee[0].Department)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Employee)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].LastName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].TitleOfCourtesy)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].BirthDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].HireDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].Address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Employee[0].Department)
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HireDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.DepartmentId)
+                    </td>
+                    <td>
+                        <button class="bg-primary text-white"> <a class="text-white" asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> </button>
+                    </td>
+                    <td>
+                        <button class="bg-danger text-white"><a class="text-white" asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a></button>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Employee)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BirthDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.HireDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Department.DepartmentId)
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> |
-                            <a asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div id="paging">
-        <div class="pagination" id="pagination">
-        </div>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="paging">
+    <div class="pagination" id="pagination">
+        @for (int i = 1; i <= Model.totalPage; i++)
+        {
+            @if (ViewBag.page == @i)
+            {
+                <a style="background-color:bisque" asp-route-pagenum="@i">@i</a>
+            }
+            else
+            {
+                <a asp-route-pagenum="@i">@i</a>
+            }
+
+        }
     </div>
 </div>
-<script>
-    $(() => {
-        var connection = new signalR.HubConnectionBuilder().withUrl("/signalrServer").build();
-        connection.start();
-
-        connection.on("LoadEmployeeChange", function () {
-            window.location.reload();
-        })
-    });
-
-    paging(@Model.totalPage);
-</script>

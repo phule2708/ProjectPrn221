@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ProjectPrn221.Models;
 using ProjectPrn221.Pages.Common;
-namespace ProjectPrn221.Pages.Admin.Employees
+namespace ProjectPrn221.Pages.Admin.Customers
 {
     public class IndexModel : PageModel
     {
@@ -18,23 +18,30 @@ namespace ProjectPrn221.Pages.Admin.Employees
             _context = context;
         }
 
-        public IList<Employee> Employee { get; set; } = default!;
+        public IList<Customer> Customer { get;set; } = default!;
 
         private int pageSize = 6;
-        public decimal totalPage = 0;
+        [BindProperty]
+        public decimal totalPage { get; set; }
 
-        public async Task OnGetAsync(int pageNum)
+        public async Task<IActionResult> OnGetAsync(int pageNum, string search)
         {
-            
-            if (_context.Employees != null)
+            if (HttpContext.Session.GetString("account")!="Employees")
             {
-        
-                IQueryable<Employee> query = _context.Employees;
+                return Redirect("/errorpage?code=401");
+            }
+            if (_context.Customers != null)
+            {
+                
+                ViewData["search"] = search;
+               
+                IQueryable<Customer> query = _context.Customers.Where(e=> (search == null)? true : e.ContactName.Contains(search));
                 totalPage = Math.Ceiling((decimal)query.Count() / pageSize);
                 (query, totalPage) = Utils.Page(query, pageSize, pageNum);
                 ViewData["page"] = pageNum;
-                Employee = await query.Include(e => e.Department).ToListAsync();
+                Customer = await query.ToListAsync();
             }
+            return Page();
         }
     }
 }

@@ -5,104 +5,105 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjectPrn221
 build_property.RootNamespace = ProjectPrn221
-build_property.ProjectDir = G:\Hùng\ProjectPrn221\ProjectPrn221\
+build_property.ProjectDir = C:\Users\lephu\OneDrive\Documents\GitHub\ProjectPrn221\ProjectPrn221\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = G:\Hùng\ProjectPrn221\ProjectPrn221
+build_property.MSBuildProjectDirectory = C:\Users\lephu\OneDrive\Documents\GitHub\ProjectPrn221\ProjectPrn221
 build_property._RazorSourceGeneratorDebug = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Customers/Details.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Customers/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3VzdG9tZXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Customers/Index.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Customers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3VzdG9tZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/DashBoard.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/DashBoard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaEJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Create.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Delete.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Edit.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Index.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Employees/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Orders/Detail.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Orders/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cT3JkZXJzXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Admin/Orders/List.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Admin/Orders/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cT3JkZXJzXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Common/Products/buy.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Common/Products/buy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tbW9uXFByb2R1Y3RzXGJ1eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Common/Products/Create.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Common/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tbW9uXFByb2R1Y3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Common/Products/Edit.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Common/Products/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tbW9uXFByb2R1Y3RzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Common/Products/List.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Common/Products/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tbW9uXFByb2R1Y3RzXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/errors/404.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/errors/404.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZXJyb3JzXDQwNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Index.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Member/Index.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Member/ListCart.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Member/ListCart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYmVyXExpc3RDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Shared/_LayoutAdmin.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/Shared/_LayoutMember.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/Shared/_LayoutMember.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRNZW1iZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/SignIn.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbkluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/_ViewImports.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Hùng/ProjectPrn221/ProjectPrn221/Pages/_ViewStart.cshtml]
+[C:/Users/lephu/OneDrive/Documents/GitHub/ProjectPrn221/ProjectPrn221/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

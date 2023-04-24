@@ -10,54 +10,68 @@
 <div class="container p-3 my-3">
     <h1 class="text-center">Order Detail</h1>
     <hr />
-<h2>OrderId: @Model.OrderId</h2>
-<table border="1" class="w-100 mb-4">    <thead>
-        <tr>
-            <th>
-                ProductId
-            </th>
-            <th>
-                Product Name
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Quantity
-            </th>
-            <th>
-                Amount
-            </th>
 
+    <table id="order-detail" border="1" class="w-100 mb-4">
+        <thead style="float:left">
+            <h2>OrderId: @Model.OrderId</h2>
 
-        </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <thead style=" background: rgb(150,88,138); color:white; height:30px;">
+            <tr>
+                <th>
+                    ProductId
+                </th>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Amount
+                </th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach (var item in Model.OrderDetail)
             {
-                    <tr>
-                        <td>
-                        @item.ProductId 
-                        </td>
-                        <td>
+                <tr>
+                    <td>
+                        @item.ProductId
+                    </td>
+                    <td>
                         @item.Product.ProductName
-                        </td>
-                        <td>
+                    </td>
+                    <td>
                         @item.UnitPrice
-                        </td>
-                        <td>
+                    </td>
+                    <td>
                         @item.Quantity
-                        </td>
-                        <td>
+                    </td>
+                    <td>
                         @{
                             float sum = ((float)@item.UnitPrice * (float)@item.Quantity);
                             sum_amount = sum_amount + sum;
                         }
-                            $ @sum
-                        </td>
-                    </tr>
+                        $ @sum
+                    </td>
+                </tr>
+                
+
             }
-    </tbody>
-</table>
-    <h2>Total: $ @sum_amount</h2>
+            <tr>
+                <td colspan="4"></td>
+                <td> <b>Total: $ @sum_amount</b></td>
+            </tr>
+        </tbody>
+
+    </table>
+    @{
+        string name = "OrderDetail" + Model.OrderId;
+    }
+    <button class="btn btn-primary w-20" style="background:linear-gradient(195deg,#66bb6a,#43a047);" onclick="exportTableToExcel('order-detail', '@name')">Export To Excel</button>
+
 </div>

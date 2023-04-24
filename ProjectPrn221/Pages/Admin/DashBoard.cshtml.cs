@@ -70,7 +70,6 @@ namespace ProjectPrn221.Pages.Admin
                               group order by order.OrderDate.Value.Month into orderMonth
                               orderby orderMonth.Key ascending
                               select new { Month = orderMonth.Key, Orders = orderMonth.Select(o => o.OrderId).Count() }
-
                      ).ToDictionary(e => e.Month, e => e.Orders);
 
             // Get all year has orders

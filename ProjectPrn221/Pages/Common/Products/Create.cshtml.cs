@@ -16,12 +16,12 @@ namespace ProjectPrn221.Pages.Admin.Products
 
         [BindProperty]
         public Product Product { get; set; }
+
         public async Task<IActionResult> OnGet()
         {
             ViewData["Category"] = new SelectList(_db.Categories, "CategoryId", "CategoryName");
             return Page();
         }
-
         public async Task<IActionResult> OnPost()
         {
             ViewData["Category"] = new SelectList(_db.Categories, "CategoryId", "CategoryName");

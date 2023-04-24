@@ -74,9 +74,9 @@ namespace ProjectPrn221.Pages.Admin
                      ).ToDictionary(e => e.Month, e => e.Orders);
 
             // Get all year has orders
-            var orderDate = dBContext.Orders.GroupBy(order => order.OrderDate.Value.Year)
-                .Select(group => group.First()).ToList();
-            orderDate.ForEach(e => orderyearsList.Add(e.OrderDate.Value.Year));
+            //var orderDate = dBContext.Orders.GroupBy(order => order.OrderDate.Value.Year)
+            //    .Select(group => group.First()).ToList();
+            //orderDate.ForEach(e => orderyearsList.Add(e.OrderDate.Value.Year));
 
             for (var i = 1; i <= 12; i++)
             {

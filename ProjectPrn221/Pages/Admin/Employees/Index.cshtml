@@ -6,8 +6,8 @@
 }
 <h1>Employees</h1>
 
-<div>
-    <button class="bg-success text-white float-right"><a class="text-white" asp-page="Create">Create New</a></button>
+<div style="text-align:right">
+    <button  class="btn btn-success"><a class="text-white" asp-page="Create">Create New</a></button>
 </div>
 <div>
     <table class="table" id="orders">
@@ -69,10 +69,10 @@
                         @Html.DisplayFor(modelItem => item.Department.DepartmentId)
                     </td>
                     <td>
-                        <button class="bg-primary text-white"> <a class="text-white" asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> </button>
+                        <button class="btn btn-primary"> <a class="text-white" asp-page="./Edit" asp-route-id="@item.EmployeeId">Edit</a> </button>
                     </td>
                     <td>
-                        <button class="bg-danger text-white"><a class="text-white" asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a></button>
+                        <button class="btn btn-danger"><a class="text-white" asp-page="./Delete" asp-route-id="@item.EmployeeId">Delete</a></button>
                     </td>
                 </tr>
             }

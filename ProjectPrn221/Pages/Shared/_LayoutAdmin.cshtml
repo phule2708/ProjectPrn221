@@ -7,10 +7,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebApplication2</title>
-@*<<<<<<< HEAD
+    @*<<<<<<< HEAD
 
 
-=======*@
+        =======*@
     <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -20,11 +20,14 @@
     <!-- Your HTML code goes here -->
     <!-- Include SimpleBar script file -->
     <script src="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.js"></script>
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-@*>>>>>>> 1a012763b7082b4bf7d446856619e6ebc2d07a1f*@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @*>>>>>>> 1a012763b7082b4bf7d446856619e6ebc2d07a1f*@
     <script src="../wwwroot/js/site.js" type="text/javascript" async></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
+        .container {
+            max-width: 1260px;
+        }
 
         #paging {
             text-align: center;
@@ -66,12 +69,13 @@
             width: 90%;
             margin: 10px auto;
         }
-        i{
-            font-size:40px;
-            color:white;
-            margin:auto;
 
+        i {
+            font-size: 40px;
+            color: white;
+            margin: auto;
         }
+
         nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3, footer, .col-2 {
             background: bisque !important;
         }
@@ -91,23 +95,25 @@
             font-size: 24px;
             margin-bottom: 25px;
         }
-        form{
-            float:left;
-        }
-        input{
-            border-radius:2px;
-            padding:5px;
+
+        form {
+            float: left;
         }
 
-        footer{
+        input {
+            border-radius: 2px;
+            padding: 5px;
+        }
+
+        footer {
             height: 50px;
             bottom: 0;
-            margin-top:20px;
+            margin-top: 20px;
             width: 100%;
         }
 
-        #dashboard{
-            height:800px;
+        #dashboard {
+            height: 800px;
         }
     </style>
 </head>
@@ -126,7 +132,7 @@
                 else
                 {
                     <div class="btn-secondary">
-                        <button class="btn-secondary" style="background: azure">
+                        <button class="btn btn-success">
                             <a asp-page="Signin" class="btn btn-success">Login</a>
                         </button>
                     </div>
@@ -163,16 +169,16 @@
         </div>
 
     </div>
-   @* <footer class="border-top footer text-muted p-4">
+    @* <footer class="border-top footer text-muted p-4">
         <div class="container">
-            &copy; 2023 - WebApplication3 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        &copy; 2023 - WebApplication3 - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>*@
+        </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

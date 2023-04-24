@@ -5,8 +5,13 @@ namespace ProjectPrn221.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("account") == null)
+            {
+                return RedirectToPage("/SignIn");
+            }
+            return RedirectToPage("/SignIn");
         }
     }
 }

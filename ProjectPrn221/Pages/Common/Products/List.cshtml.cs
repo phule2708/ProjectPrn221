@@ -22,19 +22,27 @@ namespace ProjectPrn221.Pages.Admin.Products
         public List<Category> Categories { get; set; }
         public async Task<IActionResult> OnGet(int cateId)
         {
-            string role = HttpContext.Session.GetString("account");
-            ViewData["role"] = role;
-            ViewData["SelectedId"] = cateId;
-            if (cateId == 0)
+            if (HttpContext.Session.GetString("account") == null)
             {
-                Products = _db.Products.Include(c => c.Category).ToList();
+                return RedirectToPage("/SignIn");
             }
             else
             {
-                Products =  _db.Products.Include(c=>c.Category).Where(c=>c.CategoryId == cateId).ToList();
+                string role = HttpContext.Session.GetString("account");
+                ViewData["role"] = role;
+                ViewData["SelectedId"] = cateId;
+                if (cateId == 0)
+                {
+                    Products = _db.Products.Include(c => c.Category).ToList();
+                }
+                else
+                {
+                    Products = _db.Products.Include(c => c.Category).Where(c => c.CategoryId == cateId).ToList();
+                }
+                Categories = _db.Categories.ToList();
+                return Page();
             }
-            Categories = _db.Categories.ToList();
-            return Page();
+
         }
         public async Task<IActionResult> OnGetDelete(int cateId, int id)
         {
@@ -71,7 +79,7 @@ namespace ProjectPrn221.Pages.Admin.Products
             ViewData["SelectedId"] = catId;
             ViewData["productId"] = id;
             OnGet(catId);
-            
+
         }
     }
 }

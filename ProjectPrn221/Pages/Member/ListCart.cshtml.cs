@@ -17,18 +17,27 @@ namespace ProjectPrn221.Pages.Member
 
         [ViewData]
         public List<int> listProductId { get; set; }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("listCart") != null)
+            if (HttpContext.Session.GetString("account") == null)
             {
-                var db = new PRN221DBContext();
-                string numbersJson = HttpContext.Session.GetString("listCart");
-                listProductId = JsonConvert.DeserializeObject<List<int>>(numbersJson);
-                HashSet<int> myHashSet = new HashSet<int>(listProductId);
-                listProductId = myHashSet.ToList();
-                listId = listProductId;
-                list = db.Products.ToList();             
+                return RedirectToPage("/SignIn");
             }
+            else
+            {
+                if (HttpContext.Session.GetString("listCart") != null)
+                {
+                    var db = new PRN221DBContext();
+                    string numbersJson = HttpContext.Session.GetString("listCart");
+                    listProductId = JsonConvert.DeserializeObject<List<int>>(numbersJson);
+                    HashSet<int> myHashSet = new HashSet<int>(listProductId);
+                    listProductId = myHashSet.ToList();
+                    listId = listProductId;
+                    list = db.Products.ToList();
+                    return Page();
+                }
+            }
+            return Page();
         }
         public void OnPostDelete()
         {

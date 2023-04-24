@@ -15,14 +15,23 @@ namespace ProjectPrn221.Pages.Member
 
         [ViewData]
         public List<OrderDetail> ListOrderDetail { get; set; }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            string id = HttpContext.Session.GetString("id");
-            CustomerID = id;
-            ListOrder = getListOrderById(id);
-            var data = DB.OrderDetails.Include("Product").ToList();
-            ListOrderDetail = data;
-            ViewData["sort"] = "asc";
+            if (HttpContext.Session.GetString("account") == null)
+            {
+                return RedirectToPage("/SignIn");
+            }
+            else
+            {
+                string id = HttpContext.Session.GetString("id");
+                CustomerID = id;
+                ListOrder = getListOrderById(id);
+                var data = DB.OrderDetails.Include("Product").ToList();
+                ListOrderDetail = data;
+                ViewData["sort"] = "asc";
+                return Page();
+            }
+           
         }
 
         public void OnPost()

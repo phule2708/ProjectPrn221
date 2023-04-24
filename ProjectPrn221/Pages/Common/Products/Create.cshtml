@@ -41,19 +41,8 @@
     <div class="mb-3">
         <label for="quantity-per-unit" class="form-label">Price</label>
         <input asp-for="Product.UnitPrice" type="number" min="0" max="100" class="form-control" id="Pricet" placeholder="Enter quantity per unit">
-    </div>
-    <div class="mb-3">
-        <label for="quantity-per-unit" class="form-label">Unitsln Stock</label>
-        <input asp-for="Product.UnitsInStock" type="number" min="0" max="100" class="form-control" id="unitStock" placeholder="Enter quantity per unit">
-    </div>
-    <div class="mb-3">
-        <label for="quantity-per-unit" class="form-label">UnitsOnOrder</label>
-        <input  asp-for="Product.UnitsOnOrder" type="number" min="0" max="100" class="form-control" id="UnitsOnOrder" placeholder="Enter quantity per unit">
-    </div>
-    <div class="mb-3">
-        <label for="quantity-per-unit" class="form-label">ReorderLevel</label>
-        <input asp-for="Product.ReorderLevel" type="number" min="0" max="100" class="form-control" id="ReorderLevel" placeholder="Enter quantity per unit">
-    </div>
+    </div>  
+  
     <div class="form-check" style="margin-bottom: 10px">
         <input class="form-check-input" type="checkbox" id="Discontinued" name="checkbox1">
         <label asp-for="Product.Discontinued" class="form-check-label" for="Discontinued">Discontinued</label>

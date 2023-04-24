@@ -21,9 +21,13 @@ namespace ProjectPrn221.Pages.Admin.Orders
         public Order Orders { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
-
         {
-            
+            if (HttpContext.Session.GetString("account") == null)
+            {
+                return RedirectToPage("/SignIn");
+            }
+            else
+            {
                 ViewData["id"] = id;
                 if (id == null)
                 {
@@ -34,8 +38,9 @@ namespace ProjectPrn221.Pages.Admin.Orders
                     Order = _dbContext.Orders.Where(d => d.CustomerId == id).ToList();
                 }
                 Customer = _dbContext.Customers.ToList();
-            
-            return Page();
+
+                return Page();
+            }
         }
 
         public async Task<IActionResult> OnPost(string id, string start, string end)

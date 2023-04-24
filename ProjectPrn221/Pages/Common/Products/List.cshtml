@@ -29,13 +29,13 @@
         }
     </select  
 </form>
-</div>
 <div class="addMovies">
     @if (ViewBag.role == "Customer")
     {
-        <button class="addToCart"><a style="color:white" href="/Member/ListCart">Cart list</a></button>
+        <button class="btn btn-info"><a style="color:white" href="/Member/ListCart">Cart list</a></button>
     }
-    <button class="addMovies_layout">Add New Product</button>
+    <button class="btn btn-success">Add New Product</button>
+</div>
 </div>
 
 @{
@@ -45,7 +45,44 @@
 {
     <p style="margin-top:40px;color:#FF0000">Add product with id @ViewBag.productId to cart successfully</p>
 }
-<table border="1" width="100%" class="table mt-3 table-bordered">
+<div>
+    <div class="product1">
+        <div style="width:5%">Id</div>
+        <div style="width:22%">Name</div>
+        <div class="ingredient">Price</div>
+        <div class="ingredient">Quantity</div>
+        <div class="ingredient">Category</div>
+     </div>
+</div>
+@foreach (var p in products)
+{
+     <div class="product">
+        <div style="width:5%" class="id" name="id">@p.ProductId</div>        
+        <div style="width:22%" class="name">@p.ProductName</div>
+        <div style="width:20%" class="price" data-price="@p.UnitPrice">@p.UnitPrice $</div>        
+        <div style="width:20%">@p.QuantityPerUnit</div>
+        <div style="width:20%">@p.Category.CategoryName</div>
+           @if (ViewBag.role == "Employees")
+                {
+                    <td>
+                        <a asp-page="Edit" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-page="List" asp-page-handler="Delete" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Delete</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <button class="btn btn-warning"><a asp-page="List" asp-page-handler="AddCart" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">AddCart</a></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"><a href="/Admin/Products/buy">Buy</a></button>
+                    </td>
+                }
+    </div>
+}
+@*<table border="1" width="100%" class="table mt-3 table-bordered">
     <thead>
         <tr>
             <th>ID</th>
@@ -77,16 +114,16 @@
                 else
                 {
                     <td>
-                        <button class="btn-cart"><a asp-page="List" asp-page-handler="AddCart" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Add Cart</a></button>
+                        <button class="btn btn-warning"><a asp-page="List" asp-page-handler="AddCart" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Add Cart</a></button>
                     </td>
                     <td>
-                        <button class="btn-buy"><a href="/Admin/Products/buy">Buy</a></button>
+                        <button class="btn btn-danger"><a href="/Admin/Products/buy">Buy</a></button>
                     </td>
                 }
             </tr>
         }
     </tbody>
-</table>
+</table>*@
 
 <script>
     function addToCart(id){
@@ -104,6 +141,31 @@
 </script>
 
 <style>
+    .ingredient {
+        width: 20%;
+        color: white;
+    }
+    .product {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid white;
+        margin-bottom: 10px;
+        background: rgb(234,234,234);
+        height: 128px;
+    }
+
+    .product1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid white;
+        margin-bottom: 10px;
+        background: rgb(150,88,138);
+        height: 80px;
+    }
     .btn-cart {
         border: 1px;
         background: #FFA500;
@@ -115,14 +177,15 @@
         background: red;
         border-radius: 5px;
     }
-
-        .btn-cart > a,
-        .btn-buy > a {
+        .btn-success > a,
+        .btn-info > a,
+        .btn-warning > a,
+        .btn-danger > a {
             color: white !important;
         }
 
     .addMovies {
-        float: right;
+        text-align:right;
         margin-bottom: 18px;
     }
     .filterCat{      

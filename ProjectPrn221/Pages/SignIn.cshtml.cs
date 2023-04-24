@@ -65,6 +65,10 @@ namespace ProjectPrn221.Pages
             }
 
         }
-
+        public IActionResult OnGetLogout()
+        {
+            HttpContext.Session.Remove("account");
+            return Page();
+        }
     }
 }

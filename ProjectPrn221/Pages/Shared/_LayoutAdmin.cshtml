@@ -7,11 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebApplication2</title>
-    <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.css" />
 
-    <!-- Your HTML code goes here -->
-    <!-- Include SimpleBar script file -->
-    <script src="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.js"></script>
 
     <script src="../wwwroot/js/site.js" type="text/javascript" async></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -19,7 +15,7 @@
 
         #simple-bar {
             border: 1px solid grey;
-            margin-top:0;
+            margin-top: 0;
             max-height: 600px;
             min-height: 100px;
         }
@@ -58,20 +54,16 @@
                 <a class="navbar-brand font-weight-bold" asp-area="" asp-page="/Index">Management Products</a>
                 @if (@acount != null)
                 {
-                    <div style="border-color:cornsilk">
-                        <p>@acount</p>
-                        <form method="post" asp-page-handler="Logout">
-                            <button type="submit" style="background: azure">
-                                <a>Logout</a>
-                            </button>
-                        </form>
+                    <div style="border-color:cornsilk;;display:flex">
+                        <p style="margin-right:20px">@acount</p>
+                        <a asp-page="/SignIn" asp-page-handler="Logout" class="btn btn-danger">Logout</a>
                     </div>
                 }
                 else
                 {
-                    <div class="btn-secondary" style="border-color:cornsilk">
+                    <div class="btn-secondary">
                         <button class="btn-secondary" style="background: azure">
-                            <a asp-page="Signin">Login</a>
+                            <a asp-page="Signin" class="btn btn-success">Login</a>
                         </button>
                     </div>
                 }

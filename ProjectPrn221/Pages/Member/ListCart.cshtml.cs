@@ -30,6 +30,19 @@ namespace ProjectPrn221.Pages.Member
                 list = db.Products.ToList();             
             }
         }
+        public void OnPostDelete()
+        {
+            int deleteProduct = int.Parse(Request.Form["delete"]);
+            for(int i = 0; i < listId.Count; i++)
+            {
+                listId.RemoveAll(item => item == deleteProduct);
+            }
+            string List = JsonConvert.SerializeObject(listId);
+            HttpContext.Session.Remove("listCart");
+            HttpContext.Session.SetString("listCart", List);
+            ViewData["message"] = "Đã xóa succesfully";
+            OnGet();
+        }
         public void OnPostPay()
         {
             //string[] idArray = id.Split(',');
@@ -48,8 +61,8 @@ namespace ProjectPrn221.Pages.Member
 
                 }
             }
-           
-            
+            HttpContext.Session.Remove("listCart");
+
         }
         public void addOrderDetail(int productid , decimal price, short quantity)
         {

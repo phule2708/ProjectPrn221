@@ -17,6 +17,10 @@
         }
         else
         {
+            @if (ViewBag.message != null)
+            {
+                <p style="color:#FF0000">@ViewBag.message</p>
+            }
             @foreach (var i in ViewBag.listProductId as List<int>)
             {
                 @foreach (var p in ViewBag.list as List<Product>)
@@ -32,7 +36,10 @@
                             <div style="width:20%">
                                 <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="0" onchange="calculateTotalAll()">
                             </div>
-                            <button class="btn-delete">Delete</button>
+                            <button onclick="event.preventDefault(); document.getElementById('delete-@p.ProductId').submit()" class="btn-delete">Delete</button>
+                            <form method="post" id="delete-@p.ProductId" asp-page-handler="Delete">
+                                <input type="hidden" name="delete" value="@p.ProductId" />
+                            </form>
                         </div>
                     }
                 }
@@ -45,29 +52,32 @@
     </form>
 </div>
 <script>
-        function payProduct(){
-            const confirmed = confirm('Bạn có muốn thanh toán không?');
-            if (confirmed) {     
-                document.getElementById('pay').submit();
-            } else {
-                console.log('Người dùng đã hủy thanh toán');
-            }
+    function deleteProduct(){
+         document.getElementById('delete').submit();
+    }
+    function payProduct(){
+        const confirmed = confirm('Bạn có muốn thanh toán không?');
+        if (confirmed) {
+            document.getElementById('pay').submit();
+        } else {
+            console.log('Người dùng đã hủy thanh toán');
         }
-        function calculateTotalAll() {
-             let total = 0;
-             const products = document.querySelectorAll('.product');
-             for (let i = 0; i < products.length; i++) {
-             const priceElement = products[i].querySelector('.price');
-             const quantityElement = products[i].querySelector('#quantity');
-             const price = parseFloat(priceElement.getAttribute('data-price'));
-             console.log(quantityElement);
-             const quantity = parseInt(quantityElement.value);
-             const subTotal = price * quantity;
-             total += subTotal;
-         }
-            const totalElement = document.getElementById('total-all');
-            totalElement.innerHTML = '$' + total.toFixed(4);
-        }
+    }
+    function calculateTotalAll() {
+         let total = 0;
+         const products = document.querySelectorAll('.product');
+         for (let i = 0; i < products.length; i++) {
+         const priceElement = products[i].querySelector('.price');
+         const quantityElement = products[i].querySelector('#quantity');
+         const price = parseFloat(priceElement.getAttribute('data-price'));
+         console.log(quantityElement);
+         const quantity = parseInt(quantityElement.value);
+         const subTotal = price * quantity;
+         total += subTotal;
+     }
+        const totalElement = document.getElementById('total-all');
+        totalElement.innerHTML = '$' + total.toFixed(4);
+    }
 </script>
 <style>
     .btn-buy {

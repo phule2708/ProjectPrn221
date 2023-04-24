@@ -13,7 +13,7 @@
 </div>
 
 <div class="filterCat">
-    <form id="frmCate"  method="get">
+    <form id="frmCate"  method="get" style="float:none">
     <select name="cateId" onchange="ChangeCate()">
         <option value="0">All Category</option>
         @foreach (var c in Model.Categories)
@@ -65,10 +65,10 @@
            @if (ViewBag.role == "Employees")
                 {
                     <td>
-                        <a asp-page="Edit" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Edit</a>
+                        <a class="btn btn-primary" asp-page="Edit" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Edit</a>
                     </td>
                     <td>
-                        <a asp-page="List" asp-page-handler="Delete" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Delete</a>
+                        <a class="btn btn-danger" asp-page="List" asp-page-handler="Delete" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Delete</a>
                     </td>
                 }
                 else

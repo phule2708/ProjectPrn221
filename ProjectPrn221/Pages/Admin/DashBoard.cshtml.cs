@@ -26,12 +26,12 @@ namespace ProjectPrn221.Pages.Admin
 
         public IActionResult OnGet(int orderyear)
         {
-            if (HttpContext.Session.GetString("account")!= "Employees")
+            if (HttpContext.Session.GetString("account") != "Employees")
             {
                 return Redirect("/errorpage?code=401");
             }
             DateTime currentDateTime = DateTime.Now;
-            if(orderyear == 0)
+            if (orderyear == 0)
             {
                 orderyear = currentDateTime.Year;
             }
@@ -63,22 +63,23 @@ namespace ProjectPrn221.Pages.Admin
             totalCustomer = (from customer in dBContext.Customers
                              select customer).Count();
 
-          
+
 
             orders12months = (from order in dBContext.Orders
-                                  where order.OrderDate.Value.Year == orderyear
-                                    group order by order.OrderDate.Value.Month into orderMonth
-                                  orderby orderMonth.Key ascending
-                                  select new {Month = orderMonth.Key, Orders = orderMonth.Select(o => o.OrderId).Count() }
+                              where order.OrderDate.Value.Year == orderyear
+                              group order by order.OrderDate.Value.Month into orderMonth
+                              orderby orderMonth.Key ascending
+                              select new { Month = orderMonth.Key, Orders = orderMonth.Select(o => o.OrderId).Count() }
 
-                     ).ToDictionary(e => e.Month, e=> e.Orders);
+                     ).ToDictionary(e => e.Month, e => e.Orders);
 
             // Get all year has orders
-            var orderDate =  dBContext.Orders.GroupBy(order => order.OrderDate.Value.Year)
+            var orderDate = dBContext.Orders.GroupBy(order => order.OrderDate.Value.Year)
                 .Select(group => group.First()).ToList();
             orderDate.ForEach(e => orderyearsList.Add(e.OrderDate.Value.Year));
 
-            for (var i = 1; i<=12; i++){
+            for (var i = 1; i <= 12; i++)
+            {
                 if (!orders12months.Keys.Contains(i))
                 {
                     orders12months.Add(i, 0);

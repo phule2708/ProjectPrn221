@@ -72,8 +72,20 @@
                         </select>
                     </form>
                     <div id="chart1">
-                        <h3>Statistic Orders (Month)</h3>
-                        <canvas id="myChart1" style="width: 80%;"></canvas>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Statistic Orders (Month)</h3>
+                                <canvas id="myChart1" style="width: 80%;"></canvas>
+
+                            </div>
+                            <div class="col-6">
+                                <h3>Income (Month)</h3>
+                                <canvas id="myChart2" style="width: 80%;"></canvas>
+
+                            </div>
+                        </div>
+                        
                     </div>
                     
                 </div>
@@ -100,9 +112,32 @@
             }
         });
     }
+    function ProfitOrdersChart(ProfitMonthData) {
+        var xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+        new Chart("myChart2", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    data: ProfitMonthData,
+                    backgroundColor: 'pisque',
+                    borderColor: "sienna",
+                    fill: false
+                    
+                }]
+            },
+            options: {
+                legend: { display: false }
+            }
+        });
+    }
 
     @{
         var order12 = Model.orders12months;
+        var order123 = Model.Profitorders12months;
     }
         OrdersChart([@order12[1], @order12[2], @order12[3], @order12[4], @order12[5], @order12[6], @order12[7], @order12[8], @order12[9], @order12[10], @order12[11], @order12[12]]);
+
+    ProfitOrdersChart([@order123[1], @order123[2], @order123[3], @order123[4], @order123[5], @order123[6], @order123[7], @order123[8], @order123[9], @order123[10], @order123[11], @order123[12]])
 </script>

@@ -5,55 +5,46 @@
 }
 
 <div>
-    <form method="post" id="pay" asp-page-handler="Pay">
-        <div class="product1">
-            <div class="ingredient">Product Id</div>
-            <div class="ingredient">ProductName</div>
-            <div class="ingredient">Price</div>
-            <div class="ingredient">Quantity</div>
-        </div>
-        @if (ViewBag.listProductId == null)
+    <div class="product1">
+        <div style="width:25%;color:white">Product Id</div>
+        <div style="width:27%;color:white">ProductName</div>
+        <div style="width:26%;color:white">Price</div>
+        <div style="width:20%;color:white">Quantity</div>
+    </div>
+    @if (ViewBag.listProductId == null)
+    {
+        <h1>Bạn ko có sản phảm nào thêm vào cart</h1>
+    }
+    else
+    {
+        @if (ViewBag.message != null)
         {
-            <h1>Bạn ko có sản phảm nào thêm vào cart</h1>
+            <p style="color:#FF0000">@ViewBag.message</p>
         }
-        else
-        {
-            @if (ViewBag.message != null)
+        <form method="post" id="pay" asp-page-handler="Pay">
+            @foreach (var p in ViewBag.list as List<Product>)
             {
-                <p style="color:#FF0000">@ViewBag.message</p>
-            }
-            @foreach (var i in ViewBag.listProductId as List<int>)
-            {
-                @foreach (var p in ViewBag.list as List<Product>)
-                {
-                    @if (i == p.ProductId)
-                    {
-                        <div class="product">
-                            <div style="width:25%" class="id" name="id">@p.ProductId</div>
-                            <input type="hidden" name="idP" value="@p.ProductId">
-                            <div style="width:25%" class="name">@p.ProductName</div>
-                            <div style="width:25%" class="price" data-price="@p.UnitPrice">@p.UnitPrice $</div>
-                            <input type="hidden" name="price" value="@p.UnitPrice">
-                            <div style="width:20%">
-                                <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="0" onchange="calculateTotalAll()">
-                            </div>                         
-                            <button onclick="event.preventDefault(); document.getElementById('delete-@p.ProductId').submit()" class="btn-delete">Delete</button>
-                            <form method="post" id="delete-@p.ProductId" asp-page-handler="Delete">
-                                <input type="hidden" name="delete" value="@p.ProductId" />
-                            </form>
-                        </div>
-                    }
-                }
-                @i
-            }
 
-        }      
-        <div style="text-align:right">
-            <div>Total: <span id="total-all">$0</span></div>
-            <button class="btn btn-secondary"><a style="color:white" href="/Member/Index">Back</a></button>
-            <button onclick="payProduct()" class="btn-buy">Thanh Toán</button>
-        </div>
-    </form>
+                <div class="product">
+                    <div style="width:25%" class="id" name="id">@p.ProductId</div>
+                    <input type="hidden" name="idP" value="@p.ProductId">
+                    <div style="width:25%" class="name">@p.ProductName</div>
+                    <div style="width:25%" class="price" data-price="@p.UnitPrice">@p.UnitPrice $</div>
+                    <input type="hidden" name="price" value="@p.UnitPrice">
+                    <div style="width:20%">
+                        <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="0" onchange="calculateTotalAll()">
+                    </div>                  
+                </div>
+
+            }
+        </form>
+
+    }
+    <div style="text-align:right">
+        <div>Total: <span id="total-all">$0</span></div>
+        <button class="btn btn-secondary"><a style="color:white" href="/Member/Index">Back</a></button>
+        <button onclick="payProduct()" class="btn-buy">Thanh Toán</button>
+    </div>
 </div>
 <script>
     function deleteProduct(){

@@ -9,7 +9,7 @@ namespace ProjectPrn221.Pages.Member
     public class ListCartModel : PageModel
     {
         //private readonly PRN221DBContext db;
-        public static List<decimal> test;
+
         public static List<int> listId;
 
         [ViewData]
@@ -19,6 +19,8 @@ namespace ProjectPrn221.Pages.Member
         public List<int> listProductId { get; set; }
         public IActionResult OnGet()
         {
+            var db = new PRN221DBContext();
+            list = db.Products.ToList();
             if (HttpContext.Session.GetString("account") == null)
             {
                 return RedirectToPage("/SignIn");
@@ -27,13 +29,12 @@ namespace ProjectPrn221.Pages.Member
             {
                 if (HttpContext.Session.GetString("listCart") != null)
                 {
-                    var db = new PRN221DBContext();
                     string numbersJson = HttpContext.Session.GetString("listCart");
                     listProductId = JsonConvert.DeserializeObject<List<int>>(numbersJson);
                     HashSet<int> myHashSet = new HashSet<int>(listProductId);
                     listProductId = myHashSet.ToList();
                     listId = listProductId;
-                    list = db.Products.ToList();
+                    list = list.Where(p => listProductId.Contains(p.ProductId)).ToList();
                     return Page();
                 }
             }
@@ -54,8 +55,7 @@ namespace ProjectPrn221.Pages.Member
         }
         public void OnPostPay()
         {
-            string quantity = Request.Form["quantity"][0];
-            string quantity2 = Request.Form["quantity"][1];
+            string quantity = Request.Form["quantity"];
             string price = Request.Form["price"];
             string[] ArrayQuan = quantity.Split(',');
             string[] StringPrice = price.Split(',');

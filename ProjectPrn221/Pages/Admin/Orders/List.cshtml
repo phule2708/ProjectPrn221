@@ -9,6 +9,19 @@
 <div>
     <h1 class="text-center mb-3">List of Orders</h1>
     <hr />
+    <div class="row justify-content-end mb-4">
+        <div class="col-8 ">
+            <form method="post">
+                <input type="hidden" name="id" value="@ViewBag.id" />
+                <label class="font-weight-bold">Start Order Date:</label>
+                <input type="date" name="start" value="@ViewBag.start">
+                <label class="font-weight-bold">End Order Date:</label>
+                <input type="date" id="to" name="end" value="@ViewBag.end">
+                <input type="submit" value="Filter">
+            </form>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-4 mt-2">
             <h2>Customers</h2>
@@ -30,18 +43,12 @@
 
         </div>
 
+
         <div class="col-8 ">
 
-            <form method="post">
-                <input type="hidden" name="id" value="@ViewBag.id" />
-                <label class="font-weight-bold">Start Order Date:</label>
-                <input type="date" name="start" value="@ViewBag.start">
-                <label class="font-weight-bold">End Order Date:</label>
-                <input type="date" id="to" name="end" value="@ViewBag.end">
-                <input type="submit" value="Filter">
-            </form>
+
             <div id="simple-bar">
-                <table class="table table-bordered">
+                <table id="table-order" class="table table-bordered">
                     <thead class="sticky-top thead-dark">
                         <tr>
                             <th>
@@ -84,11 +91,21 @@
 
                             </tr>
                         }
+                        <tr>
+                            <td colspan="4"></td>
+                            <td> <b>Total Freight: $  @ViewBag.totalFreight</b> </td>
+                        </tr>
+                        
                     </tbody>
+                   
                 </table>
             </div>
+            @{
+                string name = ViewBag.id + "_" + ViewBag.start + "to" + ViewBag.end;
+            }
+            <button class="btn btn-primary w-20" style="background:linear-gradient(195deg,#66bb6a,#43a047);" onclick="exportTableToExcel('table-order', '@name')">Export To Excel</button>
 
         </div>
+
     </div>
 </div>
-    

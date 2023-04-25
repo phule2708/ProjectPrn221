@@ -20,6 +20,7 @@ namespace ProjectPrn221.Pages.Admin.Orders
 
         public Order Orders { get; set; }
 
+        public decimal totalFreight = 0;
         public async Task<IActionResult> OnGetAsync(string id)
         {
             if (HttpContext.Session.GetString("account") == null)
@@ -28,6 +29,7 @@ namespace ProjectPrn221.Pages.Admin.Orders
             }
             else
             {
+                
                 ViewData["id"] = id;
                 if (id == null)
                 {
@@ -37,8 +39,13 @@ namespace ProjectPrn221.Pages.Admin.Orders
                 {
                     Order = _dbContext.Orders.Where(d => d.CustomerId == id).ToList();
                 }
+                foreach(var item in Order)
+                {
+                    totalFreight += item.Freight.Value;
+                }
+                ViewData["totalFreight"] = totalFreight;
                 Customer = _dbContext.Customers.ToList();
-
+                
                 return Page();
             }
         }
@@ -87,7 +94,11 @@ namespace ProjectPrn221.Pages.Admin.Orders
                     Order = _dbContext.Orders.Where(d => d.CustomerId == id).Where(d => d.OrderDate >= DateTime.Parse(start) && d.OrderDate <= DateTime.Parse(end)).ToList();
                 }
             }
-
+            foreach (var item in Order)
+            {
+                totalFreight += item.Freight.Value;
+            }
+            ViewData["totalFreight"] = totalFreight;
             Customer = _dbContext.Customers.ToList();
             return Page();
         }

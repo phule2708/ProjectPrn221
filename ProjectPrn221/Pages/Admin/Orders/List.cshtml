@@ -20,13 +20,15 @@
                 <input type="submit" value="Filter">
             </form>
         </div>
+       
     </div>
 
     <div class="row">
         <div class="col-4 mt-2">
             <h2>Customers</h2>
-            <div id="simple-bar1">
-                @foreach (var item in Model.Customer)
+            <div>
+                <a asp-route-id="@null" class="font-weight-bold p-2">All Customer</a><br/>
+                @foreach (var item in Model.Customers)
                 {
                     @if (ViewBag.id == @item.CustomerId)
                     {

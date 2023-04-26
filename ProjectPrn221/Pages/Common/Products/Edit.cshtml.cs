@@ -35,9 +35,15 @@ namespace ProjectPrn221.Pages.Admin.Products
             }
             if (_db.Products.Find(Product.ProductId) == null)
             {
+<<<<<<< HEAD
                 HttpContext.Session.SetString("msg", "Không tồn tại Product");
 
                 return RedirectToPage("/Common/Products/List");
+=======
+                TempData["msg"] = "Product not exsit.";
+
+                return Page();
+>>>>>>> c0d5130d8d7e305d0dafb40c4a09898b4ac9b550
             }
             _db.Attach(Product).State = EntityState.Modified;
             await _db.SaveChangesAsync();

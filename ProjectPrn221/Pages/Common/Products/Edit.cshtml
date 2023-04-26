@@ -4,10 +4,16 @@
 
 <h2>Edit Product</h2>
 
+<<<<<<< HEAD
 <form method="post">
     @if(@ViewBag.msg1 != null){
     <h2>@ViewBag.msg1</h2>
     }
+=======
+<form method="post">  
+    <p class="text-danger"> @ViewBag.msg</p>
+    <input hidden asp-for="Product.ProductId"/>
+>>>>>>> c0d5130d8d7e305d0dafb40c4a09898b4ac9b550
     <div class="mb-3">
         <label for="product-name" class="form-label">Product Name</label>
         <input asp-for="Product.ProductName" type="text" class="form-control" id="product-name" placeholder="Enter product name">
@@ -23,7 +29,7 @@
     </div>
     <div class="mb-3">
         <label for="quantity-per-unit" class="form-label">Price</label>
-        <input asp-for="Product.UnitPrice" type="number" min="0" max="100" class="form-control" id="Pricet" placeholder="Enter quantity per unit">
+        <input asp-for="Product.UnitPrice" type="number" min="0" max="100000" class="form-control" id="Pricet" placeholder="Enter quantity per unit">
         <span asp-validation-for="Product.UnitPrice"></span><br />
     </div>
 

@@ -1,5 +1,6 @@
 ﻿@{
     string acount = Context.Session.GetString("account");
+    string name = Context.Session.GetString("name");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +61,8 @@
         #simple-bar {
             border: 1px solid grey;
             margin-top: 0;
-            max-height: 600px;
-            min-height: 600px;
+            max-height: 400px;
+            min-height: 400px;
             margin-bottom:10px;
         }
 
@@ -126,7 +127,7 @@
                 @if (@acount != null)
                 {
                     <div style="border-color:cornsilk;;display:flex">
-                        <p style="margin-right:20px">@acount</p>
+                        <p style="margin-right:20px">@acount (@name)</p>
                         <a asp-page="/SignIn" asp-page-handler="Logout" class="btn btn-danger">Logout</a>
                     </div>
                 }

@@ -20,7 +20,7 @@ namespace ProjectPrn221.Pages.Admin.Customers
 
         public IList<Customer> Customer { get;set; } = default!;
 
-        private int pageSize = 6;
+        private int pageSize = 10;
         [BindProperty]
         public decimal totalPage { get; set; }
 

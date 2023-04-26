@@ -27,7 +27,6 @@ namespace ProjectPrn221.Pages.Admin
         public Dictionary<int, int> orders12months;
         public Dictionary<int, float> Profitorders12months;
         public List<int> orderyearsList = new List<int>();
-        
         public IActionResult OnGet(int orderyear)
         {
             if (HttpContext.Session.GetString("account") != "Employees")
@@ -48,11 +47,14 @@ namespace ProjectPrn221.Pages.Admin
 
 
             weeklySale = (from o in dBContext.Orders
+                          join od in dBContext.OrderDetails on o.OrderId equals od.OrderId
                           where o.OrderDate >= monday && o.OrderDate <= sunday
-                          select (float)o.Freight).Sum();
-
+                          group od by o.OrderDate into orderMonth
+                          select  (float)orderMonth.Sum(od => od.Quantity * od.UnitPrice)
+                          ).Sum();
             totalOrders = (from o in dBContext.Orders
-                           select (float)o.Freight).Sum();
+                           where o.OrderDate >= monday && o.OrderDate <= sunday
+                           select (float)o.OrderId).Count();
 
             totalCustomerHasAccount = (from customer in dBContext.Customers
                                        join account in dBContext.Accounts on customer.CustomerId equals account.CustomerId

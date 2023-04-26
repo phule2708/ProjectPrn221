@@ -32,7 +32,7 @@
 
                             </div>
                             <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
-                                <h4>Total Order</h4>
+                                <h4>Total Weekly Order</h4>
                                 <p>@Model.totalOrders</p>
                             </div>
                         </div>
@@ -54,40 +54,41 @@
                 </div>
 
             </div>
+            <div class="row m-auto mb-3">
+                <form method="get" id="form-order-year">
+                    <select name="orderyear" onchange="document.getElementById('form-order-year').submit();">
+                        <option value="0">Current</option>
+                        @foreach (var year in Model.orderyearsList)
+                        {
+                            if ((int)ViewData["year"] == year)
+                            {
+                                <option value="@year" selected>@year</option>
+                                continue;
+                            }
+                            <option value="@year">@year</option>
+
+                        }
+                    </select>
+                </form>
+            </div>
             <div id="dashboard-2">
                 <div id="chart" style="text-align: center;">
-                    <form method="get" id="form-order-year">
-                        <select name="orderyear" onchange="document.getElementById('form-order-year').submit();">
-                            <option value="0">Current</option>
-                            @foreach (var year in Model.orderyearsList)
-                            {
-                                if ((int)ViewData["year"] == year)
-                                {
-                                    <option value="@year" selected>@year</option>
-                                    continue;
-                                }
-                                <option value="@year">@year</option>
-
-                            }
-                        </select>
-                    </form>
                     <div id="chart1">
-                        
                         <div class="row">
                             <div class="col-6">
                                 <h3>Statistic Orders (Month)</h3>
-                                <canvas id="myChart1" style="width: 80%;"></canvas>
+                                <canvas id="myChart1" style="width: 90%; height:5px"></canvas>
 
                             </div>
                             <div class="col-6">
                                 <h3>Income (Month)</h3>
-                                <canvas id="myChart2" style="width: 80%;"></canvas>
+                                <canvas id="myChart2" style="width: 90%; height:5px"></canvas>
 
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -124,7 +125,7 @@
                     backgroundColor: 'pisque',
                     borderColor: "sienna",
                     fill: false
-                    
+
                 }]
             },
             options: {

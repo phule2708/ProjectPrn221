@@ -20,7 +20,7 @@ namespace ProjectPrn221.Pages.Admin.Employees
 
         public IList<Employee> Employee { get; set; } = default!;
 
-        private int pageSize = 6;
+        private int pageSize = 10;
         public decimal totalPage = 0;
 
         public async Task OnGetAsync(int pageNum)

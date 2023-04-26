@@ -72,6 +72,10 @@
     @{
         string name = "OrderDetail" + Model.OrderId;
     }
-    <button class="btn btn-primary w-20" style="background:linear-gradient(195deg,#66bb6a,#43a047);" onclick="exportTableToExcel('order-detail', '@name')">Export To Excel</button>
+    <div class="justify-content-lg-around">
+        <button class="btn btn-primary w-20" style="background:linear-gradient(195deg,#66bb6a,#43a047);" onclick="exportTableToExcel('order-detail', '@name')">Export To Excel</button>
+        <a href="~/admin/orders/list">Back To List</a>
+    </div>
+ 
 
 </div>

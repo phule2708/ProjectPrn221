@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectPrn221.Models
 {
@@ -13,8 +14,11 @@ namespace ProjectPrn221.Models
         public int OrderId { get; set; }
         public string? CustomerId { get; set; }
         public int? EmployeeId { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}")]
         public DateTime? OrderDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}")]
         public DateTime? RequiredDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}")]
         public DateTime? ShippedDate { get; set; }
         public decimal? Freight { get; set; }
         public string? ShipName { get; set; }

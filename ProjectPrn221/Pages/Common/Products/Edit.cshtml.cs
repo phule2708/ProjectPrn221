@@ -33,6 +33,12 @@ namespace ProjectPrn221.Pages.Admin.Products
                 ViewData["Category"] = new SelectList(_db.Categories, "CategoryId", "CategoryName");
                 return Page();
             }
+            if (_db.Products.Find(Product.ProductId) == null)
+            {
+                TempData["msg"] = "Product not exsit.";
+
+                return Page();
+            }
             _db.Attach(Product).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             TempData["msg"] = "Update success.";

@@ -38,9 +38,11 @@ namespace ProjectPrn221.Pages
                     {
                         if (account.Role == 1)
                         {
-
+                            string id = account.EmployeeId.ToString();
+                            string name = account.Email;
                             HttpContext.Session.SetString("account", "Employees");
-
+                            HttpContext.Session.SetString("id", id);
+                            HttpContext.Session.SetString("name", name);
                             return RedirectToPage("/Admin/dashboard");
                         }
                         else

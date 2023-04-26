@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +32,12 @@ namespace ProjectPrn221.Pages.Admin.Products
             {
                 ViewData["Category"] = new SelectList(_db.Categories, "CategoryId", "CategoryName");
                 return Page();
+            }
+            if (_db.Products.Find(Product.ProductId) == null)
+            {
+                HttpContext.Session.SetString("msg", "Không tồn tại Product");
+
+                return RedirectToPage("/Common/Products/List");
             }
             _db.Attach(Product).State = EntityState.Modified;
             await _db.SaveChangesAsync();

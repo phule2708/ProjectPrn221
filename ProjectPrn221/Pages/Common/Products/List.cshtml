@@ -52,6 +52,11 @@
 {
     <p style="margin-top:40px;color:#FF0000">@ViewBag.productId</p>
 }
+@if(@ViewBag.msg != null)
+{
+    <h1 style="color:red">@ViewBag.msg</h1>
+}
+
 <div>
     <div class="product1">
         <div style="width:18%;color:white">Image</div>

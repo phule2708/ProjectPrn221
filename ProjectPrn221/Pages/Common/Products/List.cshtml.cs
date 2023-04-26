@@ -22,6 +22,10 @@ namespace ProjectPrn221.Pages.Admin.Products
         public List<Category> Categories { get; set; }
         public async Task<IActionResult> OnGet(int cateId)
         {
+            if (HttpContext.Session.GetString("msg") != null)
+            {
+                ViewData["msg"] = HttpContext.Session.GetString("msg");
+            }
             string role = HttpContext.Session.GetString("account");
             ViewData["role"] = role;
             ViewData["SelectedId"] = cateId;

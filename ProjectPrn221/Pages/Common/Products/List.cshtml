@@ -32,7 +32,7 @@
 <div class="addMovies">
      @if (ViewBag.role == "Customer")
     {
-        <button class="btn btn-secondary"><a style="color:white" href="/Member/Index">Back</a></button>
+        <button class="btn btn-secondary"><a style="color:white" href="/Member/Index">Order List</a></button>
     }
     @if (ViewBag.role == "Customer")
     {
@@ -78,11 +78,25 @@
                     </td>
                     <td>
                         <a class="btn btn-danger" asp-page="List" asp-page-handler="Delete" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">Delete</a>
+            </td>
+        }
+        else
+        {
+            @if(ViewBag.role == null)
+            {
+                 <td>
+                        <button class="btn btn-warning"><a href="/SignIn">AddCart</a></button>
                     </td>
-                }
-                else
-                {
                     <td>
+                        <button onclick="event.preventDefault();BuyProduct(@p.ProductId,'@p.ProductName',@p.UnitPrice)" class="btn btn-danger">
+                            <a href="/SignIn">Buy</a>
+                        </button>
+                      
+                    </td>
+            }
+            else
+            {
+                  <td>
                         <button class="btn btn-warning"><a asp-page="List" asp-page-handler="AddCart" asp-route-catId="@ViewBag.SelectedId" asp-route-id="@p.ProductId">AddCart</a></button>
                     </td>
                     <td>
@@ -91,7 +105,9 @@
                              <input type="hidden" name="buyProduct" value="@p.ProductId" />
                         </form>
                     </td>
-                }
+                    }
+          
+            }
     </div>
 }
 <script>

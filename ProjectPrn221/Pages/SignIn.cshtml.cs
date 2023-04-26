@@ -48,7 +48,7 @@ namespace ProjectPrn221.Pages
                             string id = account.CustomerId;
                             HttpContext.Session.SetString("account", "Customer");
                             HttpContext.Session.SetString("id", id);
-                            return RedirectToPage("/Member/Index");
+                            return RedirectToPage("/Common/Products/List");
                         }
                     }
                 }

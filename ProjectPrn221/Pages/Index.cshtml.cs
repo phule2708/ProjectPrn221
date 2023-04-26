@@ -9,9 +9,9 @@ namespace ProjectPrn221.Pages
         {
             if (HttpContext.Session.GetString("account") == null)
             {
-                return RedirectToPage("/SignIn");
+                return RedirectToPage("/Common/Products/List");
             }
-            return RedirectToPage("/SignIn");
+            return RedirectToPage("/Common/Products/List");
         }
     }
 }
